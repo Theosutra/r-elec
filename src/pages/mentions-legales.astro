@@ -1,0 +1,65 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { company } from '../data/company';
+
+const a = company.address;
+// TODO_CLIENT : compléter l'hébergeur, le RCS, le directeur de la publication et l'assurance décennale.
+const host = {
+  name: 'TODO_CLIENT : nom de l’hébergeur (Netlify, Inc. ou Vercel Inc.)',
+  address: 'TODO_CLIENT : adresse de l’hébergeur',
+};
+---
+
+<LegalLayout
+  title="Mentions légales"
+  metaTitle="Mentions légales | R-ELEC"
+  description="Mentions légales du site R-ELEC : éditeur, hébergeur, propriété intellectuelle."
+  path="/mentions-legales"
+  updated="23 octobre 2026"
+>
+  <h2>Éditeur du site</h2>
+  <dl>
+    <dt>Raison sociale</dt><dd>{company.legalName}, {company.legalForm}</dd>
+    <dt>Siège social</dt><dd>{a.street}, {a.postalCode} {a.city}</dd>
+    <dt>SIREN</dt><dd>{company.siren}</dd>
+    <dt>SIRET</dt><dd>{company.siret}</dd>
+    <dt>TVA intracom.</dt><dd>{company.vat}</dd>
+    <dt>Code NAF</dt><dd>{company.naf} (installation électrique)</dd>
+    <dt>RCS</dt><dd>TODO_CLIENT : ville d’immatriculation</dd>
+    <dt>Gérant</dt><dd>{company.manager}</dd>
+    <dt>Directeur de la publication</dt><dd>{company.manager} (TODO_CLIENT : à confirmer)</dd>
+    <dt>Téléphone</dt><dd><a href={company.phones.main.href}>{company.phones.main.display}</a></dd>
+    <dt>E-mail</dt><dd><a href={`mailto:${company.email}`}>{company.email}</a></dd>
+  </dl>
+
+  <h2>Hébergement</h2>
+  <p>{host.name}<br />{host.address}</p>
+
+  <h2>Assurance professionnelle</h2>
+  <p>
+    TODO_CLIENT : assureur, numéro de contrat et zone géographique couverte par l’assurance décennale (mention obligatoire pour
+    les artisans du bâtiment).
+  </p>
+
+  <h2>Propriété intellectuelle</h2>
+  <p>
+    Les textes, le logo et les photographies de R-ELEC présents sur ce site sont la propriété de R-ELEC. Toute reproduction,
+    même partielle, sans autorisation écrite est interdite.
+  </p>
+  <p>
+    Certaines photographies d’illustration proviennent de la banque d’images Unsplash et sont utilisées conformément à sa
+    licence. Elles ne représentent pas l’équipe ni les chantiers de R-ELEC.
+  </p>
+
+  <h2>Données personnelles</h2>
+  <p>
+    Le traitement des données transmises par le formulaire de contact est décrit dans notre{' '}
+    <a href="/politique-confidentialite">politique de confidentialité</a>.
+  </p>
+
+  <h2>Médiation de la consommation</h2>
+  <p>
+    Conformément au Code de la consommation, le client particulier peut recourir gratuitement à un médiateur de la
+    consommation. TODO_CLIENT : nom et coordonnées du médiateur auquel R-ELEC adhère.
+  </p>
+</LegalLayout>

@@ -1,0 +1,64 @@
+---
+import { company, serviceArea } from '../data/company';
+import { reviews } from '../data/reviews';
+
+interface Props {
+  /** Données JSON-LD supplémentaires propres à la page (FAQPage, Service…). */
+  extra?: Record<string, unknown>[];
+}
+
+const { extra = [] } = Astro.props;
+const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const a = company.address;
+
+const business: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': ['Electrician', 'HVACBusiness'],
+  '@id': `${site}/#entreprise`,
+  name: company.name,
+  legalName: company.legalName,
+  description:
+    'Électricien et climaticien à Vendargues : installation, mise aux normes, dépannage électrique, climatisation et pompe à chaleur dans l’est montpelliérain. Dépannage 7j/7, 24h/24.',
+  url: `${site}/`,
+  image: `${site}/og-default.png`,
+  logo: `${site}/icon-512.png`,
+  telephone: '+33619916119',
+  email: company.email,
+  foundingDate: String(company.foundedYear),
+  vatID: company.vat,
+  taxID: company.siret.replace(/\s/g, ''),
+  priceRange: '€€',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: a.street,
+    postalCode: a.postalCode,
+    addressLocality: a.city,
+    addressRegion: a.region,
+    addressCountry: a.country,
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: company.geo.latitude, longitude: company.geo.longitude },
+  areaServed: serviceArea.map((c) => ({ '@type': 'City', name: c.name })),
+  // TODO_CLIENT : confirmer ; le dépannage est assuré 7j/7 et 24h/24.
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59',
+    },
+  ],
+};
+
+// aggregateRating UNIQUEMENT à partir d'avis réels saisis dans reviews.ts.
+if (reviews.length > 0) {
+  business.aggregateRating = {
+    '@type': 'AggregateRating',
+    ratingValue: (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1),
+    reviewCount: reviews.length,
+  };
+}
+
+const graph = [business, ...extra];
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(graph.length === 1 ? graph[0] : graph)} />

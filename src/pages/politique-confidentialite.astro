@@ -1,0 +1,64 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { company } from '../data/company';
+
+const a = company.address;
+---
+
+<LegalLayout
+  title="Politique de confidentialité"
+  metaTitle="Politique de confidentialité | R-ELEC"
+  description="Comment R-ELEC traite les données personnelles transmises par le formulaire de devis : finalités, durée de conservation, droits (RGPD)."
+  path="/politique-confidentialite"
+  updated="23 octobre 2026"
+>
+  <h2>Responsable du traitement</h2>
+  <p>
+    {company.legalName}, {company.legalForm}, {a.street}, {a.postalCode} {a.city}, représentée par {company.manager}.
+    Contact&nbsp;: <a href={`mailto:${company.email}`}>{company.email}</a>.
+  </p>
+
+  <h2>Données collectées</h2>
+  <p>Lorsque vous remplissez un formulaire de demande de devis, nous recevons&nbsp;:</p>
+  <ul>
+    <li>votre nom, votre numéro de téléphone et votre commune&nbsp;;</li>
+    <li>votre adresse e-mail, si vous la renseignez&nbsp;;</li>
+    <li>le type de besoin, votre message et, si vous en joignez une, une photo.</li>
+  </ul>
+  <p>Nous ne collectons aucune autre donnée. Le site ne dépose aucun cookie publicitaire ni de mesure d’audience.</p>
+
+  <h2>Pourquoi nous utilisons ces données</h2>
+  <p>
+    Uniquement pour vous répondre&nbsp;: vous rappeler, préparer et vous envoyer un devis, puis assurer le suivi de
+    l’intervention. Le traitement repose sur les mesures précontractuelles prises à votre demande (article 6.1.b du RGPD). Vos
+    données ne sont jamais vendues ni utilisées à des fins publicitaires.
+  </p>
+
+  <h2>Destinataires</h2>
+  <p>
+    Les données sont destinées à l’équipe de R-ELEC. Les formulaires sont transmis par le service Formspree, qui les achemine
+    jusqu’à notre messagerie. Formspree est situé aux États-Unis&nbsp;; ce transfert est encadré par les garanties prévues par
+    le RGPD. TODO_CLIENT : confirmer le prestataire de formulaire retenu.
+  </p>
+
+  <h2>Durée de conservation</h2>
+  <p>
+    Les demandes sans suite sont conservées au plus 3 ans après le dernier échange. Les données liées à un chantier réalisé
+    sont conservées le temps nécessaire au suivi et aux obligations légales (comptables et de garantie).
+  </p>
+
+  <h2>Vos droits</h2>
+  <p>
+    Vous pouvez demander l’accès à vos données, leur rectification, leur effacement ou leur limitation, et vous opposer à
+    leur traitement. Écrivez-nous à <a href={`mailto:${company.email}`}>{company.email}</a> ou par courrier à l’adresse
+    ci-dessus. Si vous estimez que vos droits ne sont pas respectés, vous pouvez saisir la CNIL
+    (<a href="https://www.cnil.fr" rel="noopener" target="_blank">cnil.fr</a>).
+  </p>
+
+  <h2>Carte et liens externes</h2>
+  <p>
+    La carte de la page Contact n’est chargée depuis OpenStreetMap que si vous cliquez sur «&nbsp;Afficher la carte&nbsp;».
+    Les polices du site sont hébergées sur nos propres serveurs&nbsp;: aucune donnée n’est transmise à un service de polices
+    tiers.
+  </p>
+</LegalLayout>

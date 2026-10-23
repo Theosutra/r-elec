@@ -1,0 +1,126 @@
+---
+// Pages locales SEO (électricien / climatisation par commune), générées depuis src/data/cities.ts.
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Button from '../components/Button.astro';
+import Faq from '../components/Faq.astro';
+import CityLinks from '../components/CityLinks.astro';
+import Steps from '../components/Steps.astro';
+import CtaBand from '../components/CtaBand.astro';
+import QuickQuoteForm from '../components/QuickQuoteForm.astro';
+import { cities, type CityPage } from '../data/cities';
+import { company } from '../data/company';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '../lib/seo';
+import vansPhoto from '../assets/photos/realisations/hero-equipe.jpeg';
+import climPhoto from '../assets/photos/placeholders/clim-split.jpg';
+
+export const getStaticPaths = (() => cities.map((page) => ({ params: { ville: page.slug }, props: { page } }))) satisfies GetStaticPaths;
+
+interface Props {
+  page: CityPage;
+}
+
+const { page } = Astro.props;
+const isClim = page.kind === 'climatisation';
+const crumbs = [{ label: `${isClim ? 'Climatisation' : 'Électricien'} ${page.city}`, href: `/${page.slug}` }];
+const jsonLd = [
+  breadcrumbJsonLd(crumbs, Astro.site),
+  serviceJsonLd({
+    name: isClim ? `Climatisation à ${page.city}` : `Électricien à ${page.city}`,
+    description: page.metaDescription,
+    areaServed: [page.city],
+    site: Astro.site,
+  }),
+  faqJsonLd(page.faq),
+];
+---
+
+<BaseLayout title={page.metaTitle} description={page.metaDescription} jsonLd={jsonLd}>
+  <PageHero
+    title={page.title}
+    highlight={page.highlight}
+    lead={page.lead}
+    crumbs={crumbs}
+    photo={isClim ? climPhoto : vansPhoto}
+    photoAlt={isClim ? 'Climatisation murale installée dans une pièce (photo d’illustration)' : 'Les deux utilitaires R-ELEC, floqués au nom de l’entreprise'}
+    photoPosition={isClim ? '40% 50%' : '25% 60%'}
+  />
+
+  <section class="container-site pt-16 lg:pt-24" aria-labelledby="intro-titre">
+    <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+      <div class="reveal">
+        <h2 id="intro-titre" class="text-[2rem] sm:text-[2.5rem] lg:text-[2.75rem]">
+          <span class="text-ink-soft">{page.city},</span>{' '}<span class="text-brand">{page.postalCode}</span>
+        </h2>
+        <div class="mt-6 grid max-w-[62ch] gap-4 text-lg text-ink-muted">
+          {page.intro.map((p) => <p>{p}</p>)}
+        </div>
+        <dl class="mt-8 grid grid-cols-2 gap-3 sm:max-w-lg">
+          <div class="rounded-2xl bg-panel p-5">
+            <dt class="text-sm text-ink-muted">Depuis nos locaux</dt>
+            <dd class="mt-1 text-xl font-semibold tracking-[-0.02em]">{page.distance}</dd>
+          </div>
+          <div class="rounded-2xl bg-panel p-5">
+            <dt class="text-sm text-ink-muted">Dépannage</dt>
+            <dd class="mt-1 text-xl font-semibold tracking-[-0.02em]">{company.emergency.short}</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="reveal">
+        <h3 class="text-xl">Nos interventions à {page.city}</h3>
+        <ul class="mt-5 grid gap-2.5">
+          {page.services.map((s) => (
+            <li>
+              <a href={s.href} class="group flex items-center justify-between gap-4 rounded-2xl border border-line px-5 py-4 font-semibold transition-colors hover:border-brand hover:bg-brand-50">
+                {s.label}
+                <Icon name="arrow-right" size={18} class="text-brand transition-transform group-hover:translate-x-1" />
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-6 text-sm text-ink-muted">
+          Communes voisines où nous intervenons aussi&nbsp;: {page.neighbours.join(', ')}.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-site pt-16 lg:pt-24" aria-labelledby="besoins-titre">
+    <div class="on-dark rounded-[var(--radius-panel)] bg-navy-900 px-6 py-12 text-white sm:px-10 sm:py-14 lg:px-14 lg:py-16">
+      <h2 id="besoins-titre" class="reveal max-w-2xl text-[2rem] sm:text-[2.5rem]">{page.needsTitle}</h2>
+      <ul class="mt-10 grid gap-4 lg:grid-cols-3">
+        {page.needs.map((n) => (
+          <li class="reveal rounded-2xl bg-navy-800 p-6 sm:p-7">
+            <h3 class="text-xl text-white">{n.title}</h3>
+            <p class="mt-3 text-on-dark-muted">{n.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Steps />
+
+  <section class="container-site pt-16 lg:pt-24" aria-labelledby="faq-titre">
+    <div class="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
+      <div>
+        <h2 id="faq-titre" class="reveal text-[2rem] sm:text-[2.5rem]">
+          <span class="text-ink-soft">Questions fréquentes</span>{' '}<span class="text-brand">à {page.city}.</span>
+        </h2>
+        <div class="mt-8">
+          <Faq items={page.faq} name={`faq-${page.slug}`} />
+        </div>
+        <Button href={company.phones.main.href} variant="navy" icon="phone" class="mt-8 tabular">{company.phones.main.display}</Button>
+      </div>
+      <QuickQuoteForm id={`devis-${page.slug}`} source={`page ${page.city}`} class="self-start border border-line shadow-[var(--shadow-card)]" />
+    </div>
+  </section>
+
+  <CityLinks exclude={page.slug} title="Nous intervenons aussi à" />
+
+  <div class="pt-20 lg:pt-28">
+    <CtaBand title={`Une panne ou un projet à ${page.city} ?`} />
+  </div>
+</BaseLayout>

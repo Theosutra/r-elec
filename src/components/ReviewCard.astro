@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+import type { Review } from '../data/reviews';
+
+interface Props {
+  review: Review;
+}
+
+const { review } = Astro.props;
+const date = new Date(`${review.date}-01`).toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+---
+
+<figure class="flex h-full flex-col rounded-[var(--radius-card)] bg-white p-7 shadow-[var(--shadow-card)]">
+  <div class="flex gap-0.5 text-brand" aria-label={`${review.rating} sur 5`}>
+    {Array.from({ length: review.rating }).map(() => <Icon name="star" size={18} class="fill-current" />)}
+  </div>
+  <blockquote class="mt-4 flex-1 text-ink">« {review.text} »</blockquote>
+  <figcaption class="mt-6 text-sm text-ink-muted">
+    <span class="font-semibold text-ink">{review.author}</span>
+    {review.city && <>, {review.city}</>} · {review.source}, {date}
+  </figcaption>
+</figure>

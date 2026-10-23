@@ -1,0 +1,19 @@
+---
+interface Props {
+  value: string;
+  /** Partie de la valeur mise en jaune (ex. « /5 »). */
+  accent?: string;
+  label: string;
+}
+
+const { value, accent, label } = Astro.props;
+---
+
+<div
+  class="flex min-h-32 flex-col justify-between gap-6 rounded-2xl bg-navy-800 p-5 transition-colors duration-300 hover:bg-navy-700 sm:min-h-36 sm:p-6"
+>
+  <p class="font-mono text-[2rem] leading-none font-medium tracking-[-0.03em] text-white tabular sm:text-[2.25rem]">
+    {value}{accent && <span class="text-volt">{accent}</span>}
+  </p>
+  <p class="text-sm text-on-dark-muted">{label}</p>
+</div>

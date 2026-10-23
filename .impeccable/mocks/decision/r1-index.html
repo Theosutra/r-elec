@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>R-ELEC : directions, tour 2</title>
+<style>
+body{margin:0;background:#eef1f6;font-family:system-ui,sans-serif;color:#0f1f3d;padding:24px}
+h1{font-size:20px;margin:0 0 16px}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+figure{margin:0;background:#fff;border-radius:12px;padding:12px}
+.v{width:100%;aspect-ratio:1440/900;overflow:hidden;position:relative;border-radius:6px}
+iframe{width:1440px;height:900px;border:0;transform-origin:0 0;position:absolute}
+figcaption{font-size:14px;margin-top:8px}
+</style></head><body>
+<h1>Tour 2, registre audacieux</h1>
+<div class="g">
+<figure><div class="v"><iframe src="r1-hypercard.html"></iframe></div><figcaption><b>1. Le fichier de fiches</b> (tirage)</figcaption></figure>
+<figure><div class="v"><iframe src="r1-verriere.html"></iframe></div><figcaption><b>2. La verrière d'atelier</b></figcaption></figure>
+<figure><div class="v"><iframe src="r1-maillot.html"></iframe></div><figcaption><b>3. Le maillot d'équipe</b></figcaption></figure>
+<figure><div class="v"><iframe src="r1-telop.html"></iframe></div><figcaption><b>4. Les sous-titres d'urgence</b></figcaption></figure>
+</div>
+<script>function fit(){document.querySelectorAll('.v').forEach(v=>{v.querySelector('iframe').style.transform='scale('+v.clientWidth/1440+')'})}addEventListener('resize',fit);fit()</script>
+</body></html>

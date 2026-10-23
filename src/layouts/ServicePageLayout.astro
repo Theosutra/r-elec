@@ -1,0 +1,129 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Steps from '../components/Steps.astro';
+import Faq from '../components/Faq.astro';
+import CityLinks from '../components/CityLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Button from '../components/Button.astro';
+import { company, serviceArea } from '../data/company';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '../lib/seo';
+import type { ServicePage } from '../data/servicePages';
+
+// TODO_CLIENT : remplacer ces photos d'illustration par de vraies photos de chantier.
+import electricitePhoto from '../assets/photos/placeholders/tableau-disjoncteurs.jpg';
+import climPhoto from '../assets/photos/placeholders/clim-split.jpg';
+
+interface Props {
+  page: ServicePage;
+}
+
+const { page } = Astro.props;
+const photos = { electricite: electricitePhoto, clim: climPhoto };
+const crumbs = [{ label: page.crumb, href: `/${page.slug}` }];
+const jsonLd = [
+  breadcrumbJsonLd(crumbs, Astro.site),
+  serviceJsonLd({
+    name: page.crumb,
+    description: page.metaDescription,
+    areaServed: serviceArea.map((c) => c.name),
+    site: Astro.site,
+  }),
+  faqJsonLd(page.faq),
+];
+const other =
+  page.slug === 'electricite-generale'
+    ? { label: 'Climatisation & chauffage', href: '/climatisation-chauffage', text: 'Clim, pompe à chaleur, entretien : la même équipe s’en occupe.' }
+    : { label: 'Électricité générale', href: '/electricite-generale', text: 'Tableau, mise aux normes, dépannage : la même équipe s’en occupe.' };
+---
+
+<BaseLayout title={page.metaTitle} description={page.metaDescription} jsonLd={jsonLd}>
+  <PageHero
+    title={page.title}
+    highlight={page.highlight}
+    lead={page.lead}
+    crumbs={crumbs}
+    photo={photos[page.photoKey]}
+    photoAlt={page.photoAlt}
+  />
+
+  <section class="container-site pt-20 lg:pt-28" aria-labelledby="prestations-titre">
+    <div class="grid gap-10 lg:grid-cols-[17rem_1fr] lg:gap-16">
+      <aside class="lg:sticky lg:top-28 lg:self-start">
+        <h2 id="prestations-titre" class="text-[2rem] sm:text-[2.5rem] lg:text-[2.25rem]">
+          <span class="text-ink-soft">{page.sectionsTitle[0]}</span>{' '}<span class="text-brand">{page.sectionsTitle[1]}</span>
+        </h2>
+        <nav aria-label="Sur cette page" class="mt-8 hidden lg:block">
+          <ul class="grid gap-0.5">
+            {page.sections.map((s) => (
+              <li>
+                <a href={`#${s.id}`} class="block rounded-full px-3.5 py-2 text-[0.95rem] text-ink-muted transition-colors hover:bg-brand-50 hover:text-brand">
+                  {s.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="grid gap-4">
+        {page.sections.map((s) => (
+          <article id={s.id} class="reveal scroll-mt-28 rounded-[var(--radius-card)] border border-line p-6 sm:p-8 lg:p-10">
+            <div class="flex items-start gap-5">
+              <span class="grid size-12 shrink-0 place-items-center rounded-full bg-volt text-navy-950">
+                <Icon name={s.icon} size={22} />
+              </span>
+              <div>
+                <h3 class="text-[1.5rem] sm:text-[1.75rem]">{s.title}</h3>
+                <p class="mt-3 max-w-[38rem] text-ink-muted">{s.intro}</p>
+              </div>
+            </div>
+            <ul class="mt-7 grid gap-x-8 gap-y-3 sm:grid-cols-2 sm:pl-[4.25rem]">
+              {s.items.map((item) => (
+                <li class="flex gap-3 text-[0.975rem]">
+                  <Icon name="check" size={18} class="mt-0.5 shrink-0 text-brand" strokeWidth={2.25} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+
+        <a
+          href={other.href}
+          class="group on-dark mt-4 flex flex-col gap-4 rounded-[var(--radius-card)] bg-navy-900 p-6 text-white sm:flex-row sm:items-center sm:justify-between sm:p-8"
+        >
+          <span>
+            <span class="block text-xl font-semibold tracking-[-0.02em]">{other.label}</span>
+            <span class="mt-1 block text-on-dark-muted">{other.text}</span>
+          </span>
+          <span class="grid size-12 shrink-0 place-items-center rounded-full bg-volt text-navy-950 transition-transform duration-300 group-hover:-rotate-45">
+            <Icon name="arrow-right" size={20} />
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Steps />
+
+  <section class="container-site pt-20 lg:pt-28" aria-labelledby="faq-titre">
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
+      <div class="reveal lg:sticky lg:top-28 lg:self-start">
+        <h2 id="faq-titre" class="text-[2rem] sm:text-[2.5rem] lg:text-[2.75rem]">
+          <span class="text-ink-soft">Vos questions,</span>{' '}<span class="text-brand">nos réponses.</span>
+        </h2>
+        <p class="mt-5 max-w-sm text-lg text-ink-muted">Un doute sur votre installation ? Appelez-nous, on vous répond directement.</p>
+        <Button href={company.phones.main.href} variant="navy" icon="phone" class="mt-7 tabular">{company.phones.main.display}</Button>
+      </div>
+      <Faq items={page.faq} name={`faq-${page.slug}`} />
+    </div>
+  </section>
+
+  <CityLinks />
+
+  <div class="pt-20 lg:pt-28">
+    <CtaBand />
+  </div>
+</BaseLayout>

@@ -1,0 +1,278 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import QuickQuoteForm from '../components/QuickQuoteForm.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import StatTile from '../components/StatTile.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { company, serviceArea } from '../data/company';
+import { homeServices, heroTags } from '../data/services';
+import { reviews } from '../data/reviews';
+import { homeFaq } from '../data/faq';
+
+// Photo du hero : vraie photo fournie par le client.
+// TODO_CLIENT : remplacer les deux photos de pôles (Unsplash) par de vraies photos de chantier.
+import heroPhoto from '../assets/photos/realisations/hero-equipe.jpeg';
+import electricitePhoto from '../assets/photos/placeholders/electricite-cablage.jpg';
+import climPhoto from '../assets/photos/placeholders/clim-murale.jpg';
+
+const phone = company.phones.main;
+const { google, pagesJaunes } = company.ratings;
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaq.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+
+const poles = [
+  {
+    title: 'Électricité générale',
+    text: 'Installation, tableau, mise aux normes, éclairage, domotique.',
+    href: '/electricite-generale',
+    photo: electricitePhoto,
+    alt: 'Électricien au travail sur un câblage (photo d’illustration)',
+  },
+  {
+    title: 'Climatisation & chauffage',
+    text: 'Split, gainable, pompe à chaleur, entretien et dépannage.',
+    href: '/climatisation-chauffage',
+    photo: climPhoto,
+    alt: 'Climatisation murale installée dans une pièce (photo d’illustration)',
+  },
+];
+---
+
+<BaseLayout
+  title="Électricien et climaticien à Vendargues | R-ELEC, dépannage 24h/24"
+  description="R-ELEC, électricien et climaticien à Vendargues depuis 2006 : installation, mise aux normes, climatisation, pompe à chaleur. Dépannage 7j/7, 24h/24. Devis gratuit."
+  jsonLd={[faqJsonLd]}
+>
+  <!-- Hero : carte photo arrondie (photo réelle des utilitaires), titre en bas à gauche, formulaire posé à droite -->
+  <section class="container-site pt-2 sm:pt-3" aria-labelledby="titre-accueil">
+    <div class="relative">
+      <div
+        class="on-dark relative isolate flex min-h-[34rem] flex-col justify-end overflow-hidden rounded-[var(--radius-panel)] bg-navy-900 text-white sm:min-h-[36rem] lg:min-h-[41rem]"
+      >
+        <Picture
+          src={heroPhoto}
+          alt="Les deux utilitaires R-ELEC, floqués au nom de l’entreprise"
+          formats={['avif', 'webp']}
+          widths={[640, 960, 1280, 1680, 2200, 2600]}
+          sizes="(min-width: 1296px) 1216px, calc(100vw - 2rem)"
+          loading="eager"
+          fetchpriority="high"
+          class="absolute inset-x-0 top-0 -z-20 h-[50%] w-full object-cover object-[18%_50%] sm:h-[66%] sm:object-[30%_50%] lg:inset-0 lg:h-full lg:object-[50%_58%]"
+          pictureAttributes={{ class: 'contents' }}
+        />
+        <div
+          class="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(11_22_48/0)_0%,rgb(11_22_48/0)_24%,rgb(11_22_48/0.8)_40%,rgb(11_22_48/1)_50%)] lg:bg-[linear-gradient(90deg,rgb(7_15_34/0.9)_0%,rgb(7_15_34/0.72)_36%,rgb(7_15_34/0.2)_70%,rgb(7_15_34/0.05)_100%)]"
+        ></div>
+
+        <div class="p-6 pt-[17rem] sm:p-10 sm:pt-[22rem] lg:max-w-[46rem] lg:p-14">
+          <h1 id="titre-accueil" class="text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.25rem]">
+            Plus de courant&nbsp;? Clim en panne&nbsp;? <span class="text-volt">On arrive.</span>
+          </h1>
+          <p class="mt-5 max-w-[34rem] text-lg leading-relaxed text-on-dark">
+            {company.team.summary}, électriciens et climaticiens à Vendargues depuis {company.activitySince}. Aucun
+            sous-traitant&nbsp;: c’est nous qui venons, de jour comme de nuit.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <Button href={phone.href} variant="volt" size="lg" icon="phone" class="tabular">
+              Appeler le {phone.display}
+            </Button>
+            <Button href="#metiers" variant="outline-dark" size="lg" iconEnd="arrow-right">Nos services</Button>
+          </div>
+          <p class="mt-5 flex items-center gap-2.5 text-sm font-medium text-on-dark">
+            <span class="live-dot"></span>
+            Ligne ouverte {company.emergency.short}, nuits et week-ends compris
+          </p>
+        </div>
+
+        <ul class="hidden flex-wrap justify-end gap-2 lg:absolute lg:right-8 lg:bottom-8 lg:flex lg:w-[25rem]" aria-label="Prestations principales">
+          {heroTags.map((tag) => (
+            <li class="rounded-full bg-navy-950/75 px-3.5 py-1.5 text-[0.8125rem] font-medium backdrop-blur-[4px]">{tag}</li>
+          ))}
+        </ul>
+      </div>
+
+      <QuickQuoteForm class="mt-4 lg:absolute lg:top-8 lg:right-8 lg:mt-0 lg:w-[25rem]" />
+    </div>
+  </section>
+
+  <!-- Villes desservies : maillage vers les pages locales -->
+  <section class="container-site" aria-labelledby="zone-titre">
+    <div class="flex flex-col gap-4 py-8 lg:flex-row lg:items-center lg:gap-10">
+      <h2 id="zone-titre" class="flex shrink-0 items-center gap-2 text-sm font-semibold tracking-normal text-ink-muted">
+        <Icon name="map-pin" size={18} class="text-brand" />
+        Nous intervenons à
+      </h2>
+      <ul class="flex flex-wrap gap-x-7 gap-y-2.5 text-lg font-semibold tracking-[-0.01em]">
+        {serviceArea.map((city) => (
+          <li>
+            {city.page ? (
+              <a href={city.page} class="text-ink transition-colors hover:text-brand hover:underline">{city.name}</a>
+            ) : (
+              <span class="text-ink-muted">{city.name}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- L'équipe et les deux métiers -->
+  <section class="container-site pt-20 lg:pt-28" aria-labelledby="famille-titre">
+    <div class="grid gap-6 lg:grid-cols-[1.15fr_1fr] lg:items-end lg:gap-16">
+      <h2 id="famille-titre" class="reveal text-[2.1rem] sm:text-[2.75rem] lg:text-[3.1rem]">
+        <span class="text-ink-soft">Une famille d’artisans,</span>{' '}
+        <span class="text-brand">du tableau électrique à la pompe à chaleur.</span>
+      </h2>
+      <div class="reveal max-w-xl text-lg text-ink-muted">
+        <p>
+          Un père et ses deux fils qui étudient, posent et dépannent eux-mêmes. Personne d’autre n’entre chez vous&nbsp;: vous
+          gardez les mêmes interlocuteurs du devis jusqu’au dépannage, des années plus tard.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10 grid gap-4 sm:gap-5 md:grid-cols-2 lg:mt-14">
+      {poles.map((pole) => (
+        <a
+          href={pole.href}
+          class="reveal group on-dark relative isolate flex min-h-[19rem] bg-navy-900 flex-col justify-end overflow-hidden rounded-[1.5rem] text-white sm:min-h-[22rem] lg:min-h-[26rem]"
+        >
+          <Picture
+            src={pole.photo}
+            alt={pole.alt}
+            formats={['avif', 'webp']}
+            widths={[480, 720, 960, 1280]}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            class="absolute inset-0 -z-20 size-full object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
+            pictureAttributes={{ class: 'contents' }}
+          />
+          <div class="absolute inset-0 -z-10 bg-[linear-gradient(180deg,transparent_35%,rgb(7_15_34/0.9)_100%)]"></div>
+          <div class="flex items-end justify-between gap-6 p-6 sm:p-8">
+            <div>
+              <h3 class="text-2xl sm:text-[1.75rem]">{pole.title}</h3>
+              <p class="mt-1.5 text-on-dark">{pole.text}</p>
+            </div>
+            <span class="grid size-12 shrink-0 place-items-center rounded-full bg-volt text-navy-950 transition-transform duration-300 group-hover:-rotate-45">
+              <Icon name="arrow-right" size={20} />
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Preuves : bloc bleu nuit et tuiles de chiffres réels -->
+  <section class="container-site pt-20 lg:pt-28" aria-labelledby="preuves-titre">
+    <div class="on-dark grid gap-10 rounded-[var(--radius-panel)] bg-navy-900 px-6 py-12 text-white sm:px-10 sm:py-14 lg:grid-cols-[1fr_1.35fr] lg:items-center lg:gap-16 lg:px-16 lg:py-20">
+      <div class="reveal">
+        <h2 id="preuves-titre" class="text-[2.1rem] sm:text-[2.75rem] lg:text-[3.1rem]">
+          Joignables <span class="text-volt">jour et nuit</span>, depuis {company.activitySince}.
+        </h2>
+        <p class="mt-5 max-w-md text-lg text-on-dark-muted">
+          Une panne ne prévient pas. La ligne de dépannage reste ouverte 7 jours sur 7, 24 heures sur 24, et c’est l’un de nous
+          qui décroche.
+        </p>
+        <a href={phone.href} class="mt-7 inline-flex items-center gap-2 font-semibold text-volt hover:underline">
+          <Icon name="phone" size={18} />
+          <span class="tabular">{phone.display}</span>
+        </a>
+      </div>
+      <div class="reveal grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-3.5">
+        <StatTile value={String(company.activitySince)} label="En activité depuis" />
+        <StatTile value="24" accent="/7" label="Dépannage, nuits et week-ends compris" />
+        <StatTile value={String(google.score)} accent="/5" label="Note moyenne sur Google" />
+        <StatTile value="0" label="Sous-traitant, jamais" />
+        <StatTile value={String(company.team.size)} label="Artisans de la même famille" />
+        <StatTile value="2" label="Métiers : électricité et climatisation" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="metiers" class="container-site pt-20 lg:pt-28" aria-labelledby="services-titre">
+    <div class="rounded-[var(--radius-panel)] bg-panel px-5 py-12 sm:px-10 sm:py-16 lg:px-14 lg:py-20">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <h2 id="services-titre" class="text-[2.1rem] sm:text-[2.75rem] lg:text-[3.1rem]">
+          Tout pour <span class="text-brand">votre installation</span>
+        </h2>
+        <p class="mt-4 text-lg text-ink-muted">Électricité générale et climatisation, en neuf comme en rénovation, chez les particuliers et les professionnels.</p>
+      </div>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-5">
+        {homeServices.map((service) => <ServiceCard service={service} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Avis : note réelle ; les textes s'affichent dès qu'ils sont saisis dans reviews.ts -->
+  <section class="container-site pt-20 lg:pt-28" aria-labelledby="avis-titre">
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-16">
+      <div class="reveal">
+        <h2 id="avis-titre" class="text-[2.1rem] sm:text-[2.75rem] lg:text-[3.1rem]">
+          <span class="text-ink-soft">Noté 5/5,</span>{' '}<span class="text-brand">chantier après chantier.</span>
+        </h2>
+        <p class="mt-5 max-w-md text-lg text-ink-muted">
+          La même note sur Google et sur Pages Jaunes, laissée par des clients de l’est montpelliérain.
+        </p>
+      </div>
+      <div class="reveal grid gap-4 sm:grid-cols-2">
+        {[
+          { source: 'Google', ...google },
+          { source: 'Pages Jaunes', ...pagesJaunes },
+        ].map((r) => (
+          <div class="rounded-[var(--radius-card)] border border-line p-7">
+            <div class="flex gap-0.5 text-brand" aria-hidden="true">
+              {Array.from({ length: 5 }).map(() => <Icon name="star" size={20} class="fill-current" />)}
+            </div>
+            <p class="mt-5 font-mono text-5xl font-medium tracking-[-0.04em] tabular">
+              {r.score}<span class="text-ink-soft">/5</span>
+            </p>
+            <p class="mt-2 text-ink-muted">
+              {r.approximate ? 'Environ ' : ''}{r.count} avis sur {r.source}
+            </p>
+            {r.url && (
+              <a href={r.url} class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:underline" rel="noopener" target="_blank">
+                Lire les avis <Icon name="arrow-up-right" size={16} />
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+    {reviews.length > 0 && (
+      <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {reviews.slice(0, 6).map((review) => <ReviewCard review={review} />)}
+      </div>
+    )}
+  </section>
+
+  <!-- FAQ -->
+  <section class="container-site pt-20 lg:pt-28" aria-labelledby="faq-titre">
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
+      <div class="reveal lg:sticky lg:top-28 lg:self-start">
+        <h2 id="faq-titre" class="text-[2.1rem] sm:text-[2.75rem] lg:text-[3.1rem]">
+          <span class="text-ink-soft">Vos questions,</span>{' '}<span class="text-brand">nos réponses.</span>
+        </h2>
+        <p class="mt-5 max-w-sm text-lg text-ink-muted">Une autre question&nbsp;? Le plus simple reste de nous appeler.</p>
+        <Button href={phone.href} variant="navy" icon="phone" class="mt-7 tabular">{phone.display}</Button>
+      </div>
+      <Faq items={homeFaq} />
+    </div>
+  </section>
+
+  <div class="pt-20 lg:pt-28">
+    <CtaBand />
+  </div>
+</BaseLayout>

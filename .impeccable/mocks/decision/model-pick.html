@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panneau directionnel</title>
+<style>
+:root{--blue:#204d9c;--blue-deep:#173a78;--yellow:#fcd93d;--ink:#0f1f3d}
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;background:#fff;font-family:"Overpass",system-ui,sans-serif;color:var(--ink)}
+header{height:88px;display:flex;align-items:center;justify-content:space-between;padding:0 72px}
+.logo{font-weight:900;font-size:30px;color:var(--blue)}
+nav{display:flex;gap:36px;font-size:16px;font-weight:600;color:#3a4a6b}
+.grid{display:grid;grid-template-columns:7fr 5fr;gap:48px;padding:40px 72px}
+h1{font-size:84px;line-height:.95;font-weight:900;color:var(--blue);letter-spacing:-.03em}
+p.lead{font-size:22px;margin-top:24px;max-width:620px;color:#33415f}
+.btn{display:inline-flex;height:64px;padding:0 32px;border-radius:12px;align-items:center;font-size:19px;font-weight:800;margin-top:36px;margin-right:12px}
+.y{background:var(--yellow);color:var(--ink)} .b{background:var(--blue);color:#fff}
+.post{display:flex;flex-direction:column;gap:10px;position:relative;padding-left:24px}
+.post::before{content:"";position:absolute;left:0;top:-20px;bottom:-200px;width:12px;background:#c9d2e3;border-radius:6px}
+.sign{background:var(--blue);color:#fff;height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 40px 0 28px;font-size:34px;font-weight:800;clip-path:polygon(0 0,92% 0,100% 50%,92% 100%,0 100%);position:relative}
+.sign::after{content:"";position:absolute;inset:5px 10% 5px 5px;border:2px solid #fff}
+.sign small{font-size:20px;font-weight:600;opacity:.85}
+.sign.here{background:var(--yellow);color:var(--ink)}
+</style></head><body>
+<header><div class="logo">R-ELEC</div><nav><span>Électricité</span><span>Climatisation</span><span>Dépannage</span><span>Contact</span></nav></header>
+<div class="grid">
+<div><h1>Tout l'est montpelliérain mène à Vendargues.</h1>
+<p class="lead">Électricité et climatisation depuis 2006. Une équipe familiale, aucun sous-traitant, dépannage 7j/7 et 24h/24.</p>
+<a class="btn y">Appeler · 06 19 91 61 19</a><a class="btn b">Demander un devis</a></div>
+<div class="post">
+<div class="sign here">R-ELEC · Vendargues<small>34740</small></div>
+<div class="sign">Castries<small>34160</small></div>
+<div class="sign">Mauguio<small>34130</small></div>
+<div class="sign">Lunel<small>34400</small></div>
+<div class="sign">Le Crès<small>34920</small></div>
+<div class="sign">Montpellier<small>34000</small></div>
+</div></div>
+</body></html>

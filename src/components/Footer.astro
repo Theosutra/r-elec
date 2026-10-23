@@ -1,0 +1,96 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { company, serviceArea } from '../data/company';
+import { mainNav, legalNav } from '../data/navigation';
+
+const year = new Date().getFullYear();
+const a = company.address;
+---
+
+<footer class="on-dark mt-16 bg-navy-900 text-on-dark lg:mt-24">
+  <div class="container-site grid gap-12 py-16 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr] lg:gap-10 lg:py-20">
+    <div class="max-w-sm">
+      <Logo tone="dark" />
+      <p class="mt-6 text-on-dark-muted">
+        Électricien et climaticien à Vendargues depuis {company.activitySince}. Une entreprise familiale qui ne sous-traite
+        rien, de l'installation au dépannage.
+      </p>
+      <p class="mt-6 inline-flex items-center gap-2.5 rounded-full border border-line-dark px-4 py-2 text-sm font-medium">
+        <span class="live-dot"></span>
+        {company.emergency.label}
+      </p>
+    </div>
+
+    <nav aria-label="Pages du site">
+      <h2 class="text-sm font-semibold tracking-normal text-white">Le site</h2>
+      <ul class="mt-4 grid gap-2.5 text-on-dark-muted">
+        <li><a href="/" class="hover:text-white">Accueil</a></li>
+        {mainNav.map((item) => (
+          <li><a href={item.href} class="hover:text-white">{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <nav aria-label="Zone d'intervention">
+      <h2 class="text-sm font-semibold tracking-normal text-white">Zone d'intervention</h2>
+      <ul class="mt-4 grid gap-2.5 text-on-dark-muted">
+        {serviceArea.map((city) => (
+          <li>
+            {city.page ? (
+              <a href={city.page} class="hover:text-white">
+                {city.page.startsWith('/climatisation') ? 'Climatisation' : 'Électricien'} {city.name}
+              </a>
+            ) : (
+              <span>{city.name}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="text-sm font-semibold tracking-normal text-white">Nous joindre</h2>
+      <ul class="mt-4 grid gap-3.5">
+        <li>
+          <a href={company.phones.main.href} class="group flex items-center gap-3 text-xl font-semibold text-white tabular">
+            <span class="grid size-10 place-items-center rounded-full bg-volt text-navy-950">
+              <Icon name="phone" size={18} />
+            </span>
+            {company.phones.main.display}
+          </a>
+        </li>
+        <li>
+          <a href={company.phones.secondary.href} class="flex items-center gap-3 text-on-dark-muted hover:text-white tabular">
+            <Icon name="phone" size={18} class="ml-2.5 mr-0.5" />
+            {company.phones.secondary.display}
+          </a>
+        </li>
+        <li>
+          <a href={`mailto:${company.email}`} class="flex items-center gap-3 text-on-dark-muted hover:text-white">
+            <Icon name="mail" size={18} class="ml-2.5 mr-0.5" />
+            {company.email}
+          </a>
+        </li>
+        <li class="flex items-start gap-3 text-on-dark-muted">
+          <Icon name="map-pin" size={18} class="mt-1 ml-2.5 mr-0.5 shrink-0" />
+          <address class="not-italic">
+            {a.street}<br />
+            {a.postalCode} {a.city}
+          </address>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-line-dark">
+    <div class="container-site flex flex-col gap-3 pt-6 pb-[6.5rem] text-sm text-on-dark-muted sm:flex-row lg:pb-6 sm:items-center sm:justify-between">
+      <p>© {year} {company.name}, {company.legalForm}. SIRET {company.siret}.</p>
+      <ul class="flex gap-5">
+        {legalNav.map((item) => (
+          <li><a href={item.href} class="hover:text-white">{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>R-ELEC : nuit bleue</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--n950:#070f22;--n900:#0b1630;--n850:#0f1d3d;--n800:#14264d;--line:rgba(150,175,225,.14);--b:#204d9c;--y:#fcd93d;--txt:#e9eef8;--mut:#aab8d6}
+*{box-sizing:border-box;margin:0}
+body{width:1440px;background:var(--n900);font-family:Onest,system-ui,sans-serif;color:var(--txt)}
+.rails{position:relative;margin:0 auto;width:1200px;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.top{height:40px;display:flex;justify-content:center;gap:36px;align-items:center;font-size:13px;color:var(--mut);border-bottom:1px solid var(--line);background:var(--n950)}
+.top b{color:var(--y);font-weight:500}
+header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;border-bottom:1px solid var(--line)}
+.logo{display:flex;gap:10px;align-items:center;font-weight:700;font-size:22px}
+.logo i{width:34px;height:34px;border-radius:8px;background:var(--y)}
+nav{display:flex;gap:30px;font-size:15px;font-weight:500;color:#cdd6ea}
+.btn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 20px;border-radius:8px;font-weight:600;font-size:15px}
+.y{background:var(--y);color:var(--n950)} .g{background:var(--n800);border:1px solid var(--line);color:var(--txt)}
+.hero{text-align:center;padding:88px 0 64px}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--y);border-left:2px solid var(--y);padding:2px 0 2px 12px}
+h1{font-size:68px;line-height:1.04;font-weight:600;letter-spacing:-.035em;margin-top:22px}
+h1 em{font-style:normal;color:var(--y)}
+.hero p{font-size:18px;color:var(--mut);margin:20px auto 0;max-width:560px;line-height:1.6}
+.ctas{display:flex;gap:12px;justify-content:center;margin-top:32px}
+.band{height:420px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden;
+background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 2px,transparent 2px 10px),var(--n850)}
+.band span{position:absolute;left:24px;bottom:20px;font-size:12px;color:var(--mut);font-family:"Martian Mono"}
+.live{position:absolute;right:24px;top:24px;background:rgba(7,15,34,.8);border:1px solid var(--line);border-radius:10px;padding:12px 16px;display:flex;gap:10px;align-items:center;font-size:14px}
+.live b{width:9px;height:9px;border-radius:50%;background:var(--y);box-shadow:0 0 0 5px rgba(252,217,61,.2)}
+.cities{display:flex;justify-content:space-around;padding:28px 0;color:#aab8d6;font-weight:600;font-size:20px;border-bottom:1px solid var(--line)}
+.about{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.about .txt{padding:96px 48px}
+h2{font-size:46px;line-height:1.08;font-weight:600;letter-spacing:-.03em}
+h2 em{font-style:normal;color:var(--y)}
+.about p{color:var(--mut);font-size:17px;line-height:1.65;margin-top:20px;max-width:440px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,170px)}
+.tile{border-left:1px solid var(--line);border-top:1px solid var(--line);padding:28px;display:flex;flex-direction:column;justify-content:space-between;background:var(--n850)}
+.tile:nth-child(1){grid-column:2;background:var(--n800)} .tile.empty{background:transparent}
+.tile strong{font-family:"Martian Mono",ui-monospace,monospace;font-size:44px;font-weight:500;letter-spacing:-.02em}
+.tile strong i{font-style:normal;color:var(--y)}
+.tile small{color:var(--mut);font-size:14px}
+.svc{text-align:center;padding:96px 0 40px}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tabs div{padding:22px;text-align:center;font-size:15px;color:var(--mut);border-left:1px solid var(--line)}
+.tabs .on{color:var(--txt);background:var(--n800);box-shadow:inset 0 2px 0 var(--y)}
+</style></head><body>
+<div class="top"><span><b>☎</b> 06 19 91 61 19</span><span><b>◷</b> Dépannage 7j/7 · 24h/24</span><span><b>⌖</b> Vendargues (34)</span></div>
+<div class="rails">
+<header><div class="logo"><i></i>R-ELEC</div><nav><span>Accueil</span><span>Électricité</span><span>Climatisation</span><span>Dépannage</span><span>Réalisations</span><span>Contact</span></nav><span class="btn y">Devis gratuit</span></header>
+<section class="hero"><span class="tag">Électricien · climaticien · depuis 2006</span>
+<h1>Plus de courant ? Clim en panne ?<br><em>On arrive</em>, de jour comme de nuit.</h1>
+<p>Sébastien Rouvière et ses deux fils interviennent dans l'est montpelliérain, sans aucun sous-traitant.</p>
+<div class="ctas"><span class="btn y">☎ Appeler le 06 19 91 61 19</span><span class="btn g">Demander un devis →</span></div></section>
+<div class="band"><div class="live"><b></b>Ligne de dépannage ouverte</div><span>Photo pleine largeur : technicien au travail (temporaire)</span></div>
+<div class="cities"><span>Vendargues</span><span>Castries</span><span>Mauguio</span><span>Lunel</span><span>Le Crès</span><span>Baillargues</span><span>Montpellier</span></div>
+<section class="about"><div class="txt"><span class="tag">L'équipe</span><h2 style="margin-top:18px"><em>Une famille</em> d'artisans, pas une plateforme.</h2><p>Un père et ses deux fils, qui étudient, posent et dépannent eux-mêmes. Du tableau électrique à la pompe à chaleur, vous gardez les mêmes interlocuteurs.</p></div>
+<div class="tiles"><div class="tile"><strong>2006</strong><small>En activité depuis</small></div><div class="tile empty" style="grid-row:2;grid-column:1"></div>
+<div class="tile" style="grid-row:2;grid-column:1"><strong>24/7</strong><small>Dépannage, jour et nuit</small></div><div class="tile" style="grid-row:2;grid-column:2"><strong>5<i>/5</i></strong><small>Note moyenne Google</small></div>
+<div class="tile" style="grid-row:3;grid-column:1"><strong>0</strong><small>Sous-traitant</small></div><div class="tile" style="grid-row:3;grid-column:2"><strong>3</strong><small>Artisans de la même famille</small></div></div></section>
+<section class="svc"><span class="tag">Nos métiers</span><h2 style="margin-top:18px">Le <em>courant</em> et la <em>clim</em>,<br>sous le même toit</h2></section>
+<div class="tabs"><div class="on">Dépannage électrique</div><div>Tableau &amp; mise aux normes</div><div>Climatisation &amp; PAC</div><div>Entretien clim</div></div>
+</div>
+</body></html>

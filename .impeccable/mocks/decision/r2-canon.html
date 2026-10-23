@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>R-ELEC : standard premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--b:#204d9c;--b7:#173a78;--b9:#0c1f45;--y:#fcd93d;--ink:#0f1f3d;--mut:#4a5a7c;--bg:#f4f6fa}
+*{box-sizing:border-box;margin:0}
+body{width:1440px;background:#fff;font-family:"Figtree",sans-serif;color:var(--ink)}
+header{height:88px;display:flex;align-items:center;justify-content:space-between;padding:0 72px;border-bottom:1px solid #e3e8f2}
+.logo{font-family:Sora,system-ui,sans-serif;font-weight:800;font-size:28px;color:var(--b);display:flex;gap:10px;align-items:center}
+.logo i{width:38px;height:38px;border-radius:10px;background:var(--b)}
+nav{display:flex;gap:32px;font-weight:600;font-size:15px}
+nav .on{color:var(--b);box-shadow:0 2px 0 var(--y)}
+.hbtns{display:flex;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 24px;border-radius:10px;font-weight:700;font-size:16px}
+.y{background:var(--y);color:var(--ink)} .ob{border:2px solid var(--b);color:var(--b)} .bb{background:var(--b);color:#fff}
+.hero{display:grid;grid-template-columns:1fr 1fr;height:700px;position:relative}
+.hl{padding:88px 64px 0 72px;background:var(--bg);background-image:linear-gradient(90deg,rgba(32,77,156,.05) 1px,transparent 1px),linear-gradient(rgba(32,77,156,.05) 1px,transparent 1px);background-size:40px 40px}
+.badge{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid #dfe5f0;border-radius:999px;padding:8px 14px;font-weight:700;font-size:13px;color:var(--b)}
+.badge b{width:8px;height:8px;border-radius:50%;background:var(--y);box-shadow:0 0 0 4px rgba(252,217,61,.35)}
+h1{font-family:Sora,system-ui,sans-serif;font-weight:800;font-size:60px;line-height:1.04;letter-spacing:-.03em;text-transform:uppercase;margin-top:24px;color:var(--b9)}
+h1 mark{background:linear-gradient(transparent 58%,var(--y) 58% 92%,transparent 92%);color:var(--b)}
+.hl p{font-size:19px;line-height:1.6;color:var(--mut);margin-top:22px;max-width:540px}
+.ctas{display:flex;gap:14px;margin-top:34px}
+.photo{background:linear-gradient(160deg,#9fb2cf,#56709a);position:relative}
+.photo span{position:absolute;left:24px;top:24px;font-size:13px;color:#fff;background:rgba(12,31,69,.6);padding:6px 10px;border-radius:6px}
+.rating{position:absolute;right:32px;bottom:150px;background:#fff;border-radius:14px;padding:16px 20px;box-shadow:0 20px 40px -20px rgba(12,31,69,.5);font-weight:700}
+.rating small{display:block;color:var(--mut);font-weight:500;font-size:13px}
+.form{position:absolute;left:72px;right:72px;bottom:-120px;background:var(--b9);border-radius:18px;padding:32px 36px;color:#fff;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:14px;
+background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:14px 14px}
+.form h3{grid-column:1/-1;font-family:Sora,system-ui,sans-serif;font-size:22px}
+.form h3 small{font-family:Figtree,system-ui,sans-serif;font-weight:500;font-size:15px;color:#b8c6e3;margin-left:12px}
+.f{height:54px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:0 16px;display:flex;align-items:center;color:#b8c6e3;font-size:15px}
+.trust{margin-top:150px;padding:0 72px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.t{border:1px solid #e3e8f2;border-radius:16px;padding:28px}
+.t .ic{width:48px;height:48px;border-radius:12px;background:var(--bg);border:1px solid #dfe5f0;display:grid;place-items:center;color:var(--b);font-weight:800}
+.t h4{font-family:Sora,system-ui,sans-serif;font-size:18px;margin-top:18px;color:var(--b9)}
+.t p{color:var(--mut);margin-top:8px;line-height:1.55}
+.kick{display:block;text-align:center;font-weight:700;color:var(--b);letter-spacing:.14em;font-size:13px;margin-top:96px}
+h2{font-family:Sora,system-ui,sans-serif;text-align:center;font-weight:800;font-size:44px;text-transform:uppercase;letter-spacing:-.02em;margin-top:12px;color:var(--b9)}
+h2 mark{background:linear-gradient(transparent 58%,var(--y) 58% 92%,transparent 92%);color:var(--b)}
+.poles{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:48px 72px 96px}
+.pole{height:360px;border-radius:20px;background:linear-gradient(160deg,#9fb2cf,#56709a);position:relative;overflow:hidden}
+.pole div{position:absolute;left:0;right:0;bottom:0;padding:28px;background:linear-gradient(transparent,rgba(12,31,69,.92));color:#fff}
+.pole h3{font-family:Sora,system-ui,sans-serif;font-size:28px}
+</style></head><body>
+<header><div class="logo"><i></i>R-ELEC</div><nav><span class="on">Accueil</span><span>Électricité</span><span>Climatisation</span><span>Dépannage 24h/24</span><span>Réalisations</span><span>Contact</span></nav><div class="hbtns"><span class="btn ob">06 19 91 61 19</span><span class="btn y">Devis gratuit →</span></div></header>
+<section class="hero">
+<div class="hl"><span class="badge"><b></b>Dépannage 7j/7 · 24h/24</span>
+<h1>Votre <mark>électricien</mark> et climaticien à Vendargues</h1>
+<p>Sébastien Rouvière et ses deux fils, depuis 2006. Installation, mise aux normes, climatisation et dépannage, sans aucun sous-traitant.</p>
+<div class="ctas"><span class="btn bb">☎ Appeler maintenant</span><span class="btn ob">Demander un devis</span></div></div>
+<div class="photo"><span>Photo : un technicien au travail sur un tableau (temporaire)</span><div class="rating">★★★★★ 5/5<small>Avis Google</small></div></div>
+<div class="form"><h3>Demande de devis rapide<small>Réponse par téléphone, devis gratuit</small></h3><div class="f">Nom</div><div class="f">Téléphone</div><div class="f">Type de besoin ▾</div><span class="btn y" style="height:54px">Envoyer →</span></div>
+</section>
+<div class="trust">
+<div class="t"><div class="ic">06</div><h4>Depuis 2006</h4><p>Une entreprise ancrée dans l'est montpelliérain.</p></div>
+<div class="t"><div class="ic">3</div><h4>Une équipe familiale</h4><p>Un père et ses deux fils, et aucun sous-traitant.</p></div>
+<div class="t"><div class="ic">24</div><h4>Dépannage 24h/24</h4><p>Joignables 7 jours sur 7, de jour comme de nuit.</p></div>
+<div class="t"><div class="ic">€</div><h4>Devis gratuit</h4><p>Un prix clair avant le moindre travaux.</p></div>
+</div>
+<span class="kick">NOS DEUX MÉTIERS</span><h2>Le courant <mark>et</mark> la clim, sous le même toit</h2>
+<div class="poles"><div class="pole"><div><h3>Électricité générale</h3><p>Tableau, normes NF C 15-100, dépannage, éclairage, domotique</p></div></div><div class="pole"><div><h3>Climatisation &amp; chauffage</h3><p>Split, gainable, pompe à chaleur, entretien, dépannage</p></div></div></div>
+</body></html>

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.impeccable/config.local.json
+.impeccable/review/
+.claude/
+.impeccable/hook.cache.json

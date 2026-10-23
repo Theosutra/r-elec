@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+import { company } from '../data/company';
+---
+
+<div
+  class="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 px-3 pt-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] backdrop-blur-[6px] lg:hidden"
+>
+  <div class="mx-auto grid max-w-xl grid-cols-[1.35fr_1fr] gap-2.5">
+    <a
+      href={company.phones.main.href}
+      class="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-volt font-semibold text-navy-950 active:translate-y-px"
+    >
+      <Icon name="phone" size={20} />
+      Appeler
+    </a>
+    <a
+      href="/contact#devis"
+      class="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-navy-900 font-semibold text-white active:translate-y-px"
+    >
+      <Icon name="file-text" size={20} />
+      Devis
+    </a>
+  </div>
+</div>

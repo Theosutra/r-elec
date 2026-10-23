@@ -1,0 +1,44 @@
+---
+import Button from './Button.astro';
+import { company } from '../data/company';
+import { fr } from '../lib/typo';
+
+interface Props {
+  title?: string;
+  text?: string;
+}
+
+const {
+  title = 'Une panne, un projet ? Parlons-en.',
+  text = 'Appelez directement l’équipe ou décrivez votre besoin : le devis est gratuit et on vous rappelle rapidement.',
+} = Astro.props;
+---
+
+<section class="container-site" aria-labelledby="cta-final">
+  <div class="on-dark relative overflow-hidden rounded-[var(--radius-panel)] bg-navy-900 px-6 py-14 text-white sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+    <div class="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+      <div>
+        <h2 id="cta-final" class="text-[2.25rem] sm:text-5xl lg:text-[3.5rem]">
+          {fr(title)}
+        </h2>
+        <p class="mt-5 max-w-xl text-lg text-on-dark-muted">{fr(text)}</p>
+      </div>
+      <div class="flex flex-col gap-3 lg:items-end">
+        <a
+          href={company.phones.main.href}
+          class="font-mono text-[1.75rem] leading-none font-medium tracking-[-0.04em] whitespace-nowrap text-volt tabular hover:underline sm:text-[2.6rem]"
+        >
+          {company.phones.main.display}
+        </a>
+        <p class="flex items-center gap-2 text-sm text-on-dark-muted">
+          <span class="live-dot"></span>
+          {company.emergency.label}
+        </p>
+        <div class="mt-3 flex flex-wrap gap-3">
+          <Button href={company.phones.main.href} variant="volt" size="lg" icon="phone">Appeler</Button>
+          <Button href="/contact#devis" variant="outline-dark" size="lg" iconEnd="arrow-right">Demander un devis</Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+// Déroulé d'une intervention : la séquence a un sens pour le client, d'où la numérotation.
+const steps = [
+  { title: 'Vous nous appelez', text: 'Ou vous remplissez le formulaire, photo à l’appui si possible. C’est l’un de nous qui répond.' },
+  { title: 'On se déplace', text: 'Pour un dépannage, on vient au plus vite. Pour un projet, on prend rendez-vous pour voir les lieux.' },
+  { title: 'Devis clair et gratuit', text: 'Un prix détaillé avant les travaux, sans surprise. Vous décidez à tête reposée.' },
+  { title: 'Travaux et suivi', text: 'Nous réalisons le chantier nous-mêmes, puis restons joignables pour l’entretien et les questions.' },
+];
+---
+
+<section class="container-site pt-20 lg:pt-28" aria-labelledby="etapes-titre">
+  <div class="rounded-[var(--radius-panel)] bg-panel px-6 py-12 sm:px-10 sm:py-14 lg:px-14 lg:py-16">
+    <h2 id="etapes-titre" class="reveal max-w-2xl text-[2rem] sm:text-[2.5rem] lg:text-[2.75rem]">
+      <span class="text-ink-soft">Comment ça se passe,</span>{' '}<span class="text-brand">du premier appel au suivi.</span>
+    </h2>
+    <ol class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {steps.map((s, i) => (
+        <li class="reveal rounded-[var(--radius-card)] bg-white p-6">
+          <span class="font-mono text-sm font-medium text-brand tabular" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="mt-4 text-lg">{s.title}</h3>
+          <p class="mt-2 text-[0.975rem] leading-relaxed text-ink-muted">{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

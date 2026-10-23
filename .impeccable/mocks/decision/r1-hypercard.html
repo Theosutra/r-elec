@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Le fichier de fiches</title>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Schibsted+Grotesk:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--b:#204d9c;--y:#fcd93d;--ink:#0f1f3d}
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;background:#fff;font-family:"Schibsted Grotesk",sans-serif;color:var(--b);
+background-image:radial-gradient(var(--b) .8px,transparent .9px);background-size:6px 6px;background-color:#fff}
+.menubar{height:44px;background:#fff;border-bottom:3px solid var(--b);display:flex;align-items:center;gap:36px;padding:0 32px;font-family:"Pixelify Sans";font-size:20px;font-weight:700}
+.menubar .r{margin-left:auto}
+.stack{position:absolute;left:150px;top:110px;width:1140px;height:700px}
+.card{position:absolute;inset:0;background:#fff;border:3px solid var(--b);border-radius:14px;box-shadow:8px 8px 0 var(--b)}
+.card.c2{transform:translate(22px,-22px)} .card.c3{transform:translate(44px,-44px)}
+.front{padding:56px 64px}
+.tab{font-family:"Pixelify Sans";font-size:18px;display:flex;justify-content:space-between;border-bottom:3px solid var(--b);padding-bottom:12px}
+h1{font-size:88px;font-weight:800;line-height:.95;letter-spacing:-.035em;margin-top:44px;max-width:880px;color:var(--ink)}
+h1 em{font-style:normal;background:var(--y);padding:0 .12em;color:var(--b)}
+.btns{display:flex;gap:18px;margin-top:52px}
+.btn{font-family:"Pixelify Sans";font-size:26px;font-weight:700;border:3px solid var(--b);border-radius:12px;padding:18px 30px;background:#fff;box-shadow:4px 4px 0 var(--b)}
+.btn.on{background:var(--b);color:#fff}
+.links{position:absolute;right:64px;bottom:56px;display:grid;gap:10px;font-family:"Pixelify Sans";font-size:20px}
+.links span{border:2px solid var(--b);border-radius:8px;padding:8px 16px;background:#fff}
+</style></head><body>
+<div class="menubar"><span>R-ELEC</span><span>Électricité</span><span>Clim</span><span>Dépannage</span><span>Villes</span><span class="r">06 19 91 61 19</span></div>
+<div class="stack">
+<div class="card c3"></div><div class="card c2"></div>
+<div class="card front">
+<div class="tab"><span>Fiche 1 / 9 — Accueil</span><span>Vendargues · depuis 2006</span></div>
+<h1>Un père, deux fils, <em>zéro</em> sous-traitant.</h1>
+<p style="font-size:22px;margin-top:24px;max-width:640px;color:#33415f">Électricité et climatisation dans l'est montpelliérain. Dépannage 7j/7, 24h/24.</p>
+<div class="btns"><span class="btn on">☎ Appeler</span><span class="btn">Demander un devis →</span></div>
+<div class="links"><span>→ Panne électrique</span><span>→ Clim en panne</span><span>→ Mise aux normes</span></div>
+</div></div>
+</body></html>

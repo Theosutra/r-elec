@@ -1,0 +1,95 @@
+---
+// Formulaire de devis rapide (accueil). Envoi vers Formspree :
+// - sans JS : POST classique, Formspree affiche sa page de confirmation ;
+// - avec JS : envoi en arrière-plan et message de confirmation sur place.
+// Anti-spam : champ honeypot `_gotcha`, invisible pour les humains.
+import Icon from './Icon.astro';
+import { needOptions } from '../data/services';
+import { company } from '../data/company';
+
+interface Props {
+  id?: string;
+  class?: string;
+  /** Page d'origine, reprise dans l'objet de l'e-mail reçu. */
+  source?: string;
+}
+
+const { id = 'devis-rapide', class: className, source = 'accueil' } = Astro.props;
+const endpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT || 'https://formspree.io/f/TODO_CLIENT';
+const field =
+  'mt-1.5 block h-12 w-full rounded-xl border border-line bg-white px-3.5 text-[0.95rem] text-ink placeholder:text-ink-muted transition-[border-color,box-shadow] outline-none hover:border-[#c9d2e3] focus:border-brand focus:shadow-[0_0_0_3px_rgb(32_77_156/0.18)] aria-[invalid=true]:border-[#c2410c]';
+const label = 'block text-[0.8125rem] font-semibold text-ink';
+---
+
+<form
+  id={id}
+  action={endpoint}
+  method="POST"
+  class:list={['quote-form rounded-[1.25rem] bg-white p-5 text-ink shadow-[var(--shadow-float)] sm:p-6', className]}
+  data-quote-form
+  data-phone={company.phones.main.display}
+>
+  <h2 class="text-[1.375rem] font-semibold tracking-[-0.02em]">Demande de devis</h2>
+  <p class="mt-1 text-sm text-ink-muted">Gratuit et sans engagement. On vous rappelle rapidement.</p>
+
+  <div class="mt-4 grid gap-3.5">
+    <div class="grid gap-3.5 sm:grid-cols-2">
+      <div>
+        <label for={`${id}-nom`} class={label}>Nom</label>
+        <input id={`${id}-nom`} name="nom" type="text" autocomplete="name" required class={field} placeholder="Votre nom" />
+      </div>
+      <div>
+        <label for={`${id}-tel`} class={label}>Téléphone</label>
+        <input
+          id={`${id}-tel`}
+          name="telephone"
+          type="tel"
+          inputmode="tel"
+          autocomplete="tel"
+          required
+          pattern="[0-9 +.()-]{10,}"
+          class={field}
+          placeholder="06 12 34 56 78"
+        />
+      </div>
+    </div>
+    <div>
+      <label for={`${id}-ville`} class={label}>Ville</label>
+      <input id={`${id}-ville`} name="ville" type="text" autocomplete="address-level2" class={field} placeholder="Vendargues, Castries…" />
+    </div>
+    <div>
+      <label for={`${id}-besoin`} class={label}>Votre besoin</label>
+      <div class="relative">
+        <select id={`${id}-besoin`} name="besoin" required class:list={[field, 'appearance-none pr-10']}>
+          <option value="" disabled selected>Choisir…</option>
+          {needOptions.map((o) => <option>{o}</option>)}
+        </select>
+        <Icon name="chevron-down" size={18} class="pointer-events-none absolute top-1/2 right-3.5 -translate-y-[calc(50%-3px)] text-ink-muted" />
+      </div>
+    </div>
+
+    <div class="hidden" aria-hidden="true">
+      <label for={`${id}-gotcha`}>Ne pas remplir</label>
+      <input id={`${id}-gotcha`} type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+    </div>
+    <input type="hidden" name="_subject" value={`Demande de devis (site R-ELEC, ${source})`} />
+
+    <button
+      type="submit"
+      class="mt-1 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-volt font-semibold text-navy-950 transition-colors hover:bg-volt-600 disabled:cursor-wait disabled:opacity-70"
+    >
+      <span data-label>Envoyer ma demande</span>
+      <Icon name="send" size={18} class="send-icon" />
+      <Icon name="loader-circle" size={18} class="spin-icon hidden animate-spin" />
+    </button>
+
+    <p class="text-xs leading-relaxed text-ink-muted">
+      Vos coordonnées servent uniquement à vous répondre. <a href="/politique-confidentialite" class="underline">Confidentialité</a>
+    </p>
+    <p data-status role="status" aria-live="polite" tabindex="-1" class="hidden"></p>
+  </div>
+</form>
+
+<script>
+  import '../scripts/quote-form';
+</script>

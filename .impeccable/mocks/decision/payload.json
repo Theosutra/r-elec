@@ -1,0 +1,97 @@
+{
+  "title": "Direction visuelle — R-ELEC",
+  "question": "Le tirage a désigné « La plaque émaillée ». La garder, prendre une alternative, ou relancer.",
+  "options": [
+    {
+      "id": "assigned",
+      "kind": "assigned",
+      "label": "La plaque émaillée",
+      "kicker": "THE ROLL",
+      "lineage": "Plaques de rue et enseignes d'artisan en tôle émaillée bleue, filet blanc, rivets",
+      "thesis": "R-ELEC se présente comme l'enseigne bleue vissée au mur du village : un nom, un métier, un numéro.",
+      "palette": ["#204d9c", "#173a78", "#ffffff", "#fcd93d", "#f4f6fa"],
+      "materials": ["tôle émaillée bleue et brillante", "filet blanc intérieur", "angles arrondis et rivets", "grotesque étroite et grasse"],
+      "viewport": "Une grande plaque bleue sur toute la largeur porte le H1 « Le père et ses deux fils… », le numéro géant et les deux CTA ; dessous, une rangée de plaques de rue (Vendargues, Castries, Mauguio, Lunel…) mène aux pages des villes.",
+      "risk": "Trop appuyé (fausse brillance, rivets en surnombre), le rendu devient rétro-kitsch : la brillance doit rester discrète et le filet doit faire tout le travail.",
+      "raised": [
+        {"from": "brand-identity-canon-single-hue-doll-program", "raise": "Le bleu occupe des zones entières (plaques, bandeaux, footer) et non de simples accents ; le blanc sert de respiration."},
+        {"from": "medium-native-ansi-bbs-nightboard", "raise": "La ligne de dépannage est traitée comme une présence vivante : un témoin jaune « Ligne ouverte 7j/7, 24h/24 », qui est le seul élément animé du hero."},
+        {"from": "signals-instruments-nixie-laboratory-counter", "raise": "Les faits (2006, 5/5, 24h/24, zéro sous-traitance) sont posés comme des numéros de maison émaillés, en chiffres tabulaires à position fixe."},
+        {"from": "digital-design-canon-greiman-hybrid-collage", "raise": "L'échelle saute franchement, de la mention légale au numéro de téléphone affiché en format panneau."}
+      ],
+      "html": ".impeccable/mocks/decision/assigned.html"
+    },
+    {
+      "id": "model-pick",
+      "kind": "pick",
+      "label": "Le panneau directionnel",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Signalisation routière directionnelle française (panneaux bleus, flèches, noms de communes)",
+      "thesis": "Toutes les routes de l'est montpelliérain mènent à R-ELEC : la zone d'intervention devient la navigation.",
+      "palette": ["#204d9c", "#ffffff", "#fcd93d", "#c9d2e3"],
+      "materials": ["panneaux en flèche", "filet blanc", "mât gris", "grotesque routière"],
+      "viewport": "Le H1 « Tout l'est montpelliérain mène à Vendargues » à gauche ; à droite, un mât de panneaux fléchés vers chaque commune, celui de R-ELEC en jaune.",
+      "risk": "Peut évoquer l'administration ou le marquage routier plutôt qu'un artisan chaleureux, et sa mise en page reste proche d'un hero coupé en deux classique.",
+      "html": ".impeccable/mocks/decision/model-pick.html"
+    },
+    {
+      "id": "challenger-single-hue",
+      "kind": "challenger",
+      "catalogId": "brand-identity-canon-single-hue-doll-program",
+      "label": "Programme mono-teinte",
+      "verdict": "declined",
+      "lineage": "Identité de marque jouet bâtie sur une seule teinte",
+      "thesis": "Le bleu R-ELEC partout, à pleine intensité.",
+      "palette": ["#204d9c", "#ffffff"],
+      "materials": ["teinte unique brillante", "pilules"],
+      "viewport": "Toute la page en bleu, logotype balayé en travers.",
+      "case": "Le blanc dominant exigé par la charte est perdu, et l'univers jouet ne parle pas à un client en panne.",
+      "kept": "L'engagement total sur une couleur : le bleu occupe des zones entières.",
+      "risk": "Fatigant à l'œil et éloigné de l'univers artisan."
+    },
+    {
+      "id": "challenger-bbs",
+      "kind": "challenger",
+      "catalogId": "medium-native-ansi-bbs-nightboard",
+      "label": "Serveur BBS nocturne",
+      "verdict": "declined",
+      "lineage": "BBS ANSI des années 90",
+      "thesis": "Une seule ligne de téléphone, joignable la nuit.",
+      "palette": ["#000000", "#00aaaa", "#ffffff"],
+      "materials": ["grille de caractères", "texte mode"],
+      "viewport": "Écran texte numéroté.",
+      "case": "Aucun client particulier ne s'y reconnaît, et la clarté s'effondre.",
+      "kept": "La présence rare et précieuse : la ligne de dépannage affichée comme un signal vivant.",
+      "risk": "Gadget nostalgique."
+    },
+    {
+      "id": "challenger-nixie",
+      "kind": "challenger",
+      "catalogId": "signals-instruments-nixie-laboratory-counter",
+      "label": "Compteur Nixie",
+      "verdict": "declined",
+      "lineage": "Compteurs de laboratoire à tubes Nixie",
+      "thesis": "Les chiffres comme interface.",
+      "palette": ["#111111", "#ff7a1a", "#8a8f96"],
+      "materials": ["tubes de verre", "acier noirci"],
+      "viewport": "Des bancs de chiffres orange sur un fond noir.",
+      "case": "L'orange sur noir sort de la charte, et c'est un costume d'instrument.",
+      "kept": "Les faits sont posés à position fixe, en chiffres tabulaires.",
+      "risk": "Hors charte."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code"},
+  "canon": true,
+  "canonCard": {
+    "kind": "canon",
+    "label": "Le standard artisan",
+    "thesis": "Ce que livre la catégorie, mais exécuté parfaitement.",
+    "palette": ["#ffffff", "#204d9c", "#fcd93d", "#0f1f3d"],
+    "materials": ["grille propre", "photo en bandeau", "cartes de réassurance"],
+    "viewport": "Un bandeau photo voilé de bleu porte le H1 et les deux CTA, avec quatre cartes de réassurance en dessous.",
+    "risk": "Indiscernable des concurrents, et c'est voulu.",
+    "html": ".impeccable/mocks/decision/canon.html"
+  },
+  "steer": true
+}

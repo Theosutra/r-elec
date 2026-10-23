@@ -1,0 +1,66 @@
+---
+// Icônes Lucide utilisées sur le site, appelées par leur nom (ex. <Icon name="phone" />).
+// Pour une nouvelle icône : l'importer ici depuis @lucide/astro/icons/<nom>.
+import ArrowRight from '@lucide/astro/icons/arrow-right';
+import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
+import BadgeEuro from '@lucide/astro/icons/badge-euro';
+import Cable from '@lucide/astro/icons/cable';
+import Check from '@lucide/astro/icons/check';
+import ChevronDown from '@lucide/astro/icons/chevron-down';
+import CircleAlert from '@lucide/astro/icons/circle-alert';
+import Clock from '@lucide/astro/icons/clock';
+import FileText from '@lucide/astro/icons/file-text';
+import Heater from '@lucide/astro/icons/heater';
+import LayoutPanelTop from '@lucide/astro/icons/layout-panel-top';
+import LoaderCircle from '@lucide/astro/icons/loader-circle';
+import Mail from '@lucide/astro/icons/mail';
+import MapPin from '@lucide/astro/icons/map-pin';
+import Phone from '@lucide/astro/icons/phone';
+import Send from '@lucide/astro/icons/send';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
+import Snowflake from '@lucide/astro/icons/snowflake';
+import Star from '@lucide/astro/icons/star';
+import Users from '@lucide/astro/icons/users';
+import Wrench from '@lucide/astro/icons/wrench';
+import Zap from '@lucide/astro/icons/zap';
+
+const icons = {
+  'arrow-right': ArrowRight,
+  'arrow-up-right': ArrowUpRight,
+  'badge-euro': BadgeEuro,
+  cable: Cable,
+  check: Check,
+  'chevron-down': ChevronDown,
+  'circle-alert': CircleAlert,
+  clock: Clock,
+  'file-text': FileText,
+  heater: Heater,
+  'layout-panel-top': LayoutPanelTop,
+  'loader-circle': LoaderCircle,
+  mail: Mail,
+  'map-pin': MapPin,
+  phone: Phone,
+  send: Send,
+  'shield-check': ShieldCheck,
+  snowflake: Snowflake,
+  star: Star,
+  users: Users,
+  wrench: Wrench,
+  zap: Zap,
+} as const;
+
+export type IconName = keyof typeof icons;
+
+interface Props {
+  name: IconName | string;
+  size?: number;
+  class?: string;
+  strokeWidth?: number;
+}
+
+const { name, size = 20, class: className, strokeWidth = 1.75 } = Astro.props;
+const Component = icons[name as IconName];
+if (!Component) throw new Error(`Icône inconnue : ${name}`);
+---
+
+<Component size={size} class={className} stroke-width={strokeWidth} aria-hidden="true" focusable="false" />

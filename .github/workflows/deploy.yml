@@ -1,0 +1,49 @@
+# Publie le site sur GitHub Pages à chaque push sur main.
+name: Déploiement GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build
+        run: npm run build
+        env:
+          # Adresse publique et sous-dossier GitHub Pages. Avec un nom de domaine : mettre l'URL du domaine et vider BASE_PATH.
+          PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://theosutra.github.io' }}
+          BASE_PATH: ${{ vars.BASE_PATH || '/r-elec' }}
+          # Préproduction : le site n'est pas indexé tant que cette variable n'est pas « true ».
+          PUBLIC_ALLOW_INDEXING: ${{ vars.PUBLIC_ALLOW_INDEXING }}
+          PUBLIC_FORMSPREE_ENDPOINT: ${{ vars.PUBLIC_FORMSPREE_ENDPOINT }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

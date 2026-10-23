@@ -1,0 +1,174 @@
+---
+import { Picture } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import Faq from '../components/Faq.astro';
+import { company, serviceArea } from '../data/company';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '../lib/seo';
+import vansPhoto from '../assets/photos/realisations/hero-equipe.jpeg';
+
+const phone = company.phones.main;
+const crumbs = [{ label: 'Dépannage urgent', href: '/depannage-urgent' }];
+
+const emergencies = [
+  { icon: 'zap', title: 'Plus de courant', text: 'Dans toute la maison ou sur une partie seulement.' },
+  { icon: 'layout-panel-top', title: 'Disjoncteur qui saute', text: 'Il ne veut plus se réarmer, ou retombe aussitôt.' },
+  { icon: 'circle-alert', title: 'Odeur de brûlé', text: 'Prise qui chauffe, tableau qui sent le chaud : on vient en priorité.' },
+  { icon: 'snowflake', title: 'Clim en panne', text: 'Elle ne refroidit plus, fuit ou affiche un code erreur.' },
+  { icon: 'heater', title: 'Pompe à chaleur à l’arrêt', text: 'Plus de chauffage ou plus d’eau chaude.' },
+  { icon: 'wrench', title: 'Commerce à l’arrêt', text: 'Vitrine éteinte, froid coupé : on vous remet en route.' },
+];
+
+const safety = [
+  'Si vous sentez une odeur de brûlé ou voyez des étincelles, coupez le disjoncteur général du tableau.',
+  'Ne touchez pas un fil dénudé ni un appareil mouillé, et éloignez les enfants.',
+  'Débranchez l’appareil qui semble en cause, sans forcer s’il est chaud.',
+  'Pour une clim qui fuit, arrêtez-la avec la télécommande et coupez son disjoncteur.',
+];
+
+const faq = [
+  {
+    question: 'Combien coûte un dépannage la nuit ou le week-end ?',
+    answer:
+      // TODO_CLIENT : préciser la politique tarifaire de nuit et de week-end si le client le souhaite.
+      'Le tarif dépend du moment et de la nature de la panne. Posez la question au téléphone : nous vous répondons franchement avant de nous déplacer.',
+  },
+  {
+    question: 'Intervenez-vous vraiment 24h/24 ?',
+    answer: 'Oui, la ligne de dépannage est ouverte 7 jours sur 7, 24 heures sur 24, nuits, week-ends et jours fériés compris.',
+  },
+  {
+    question: 'Dans quelles communes intervenez-vous en urgence ?',
+    answer: `Depuis Vendargues : ${serviceArea.map((c) => c.name).join(', ')}. Pour une autre commune proche, appelez-nous.`,
+  },
+];
+
+const jsonLd = [
+  breadcrumbJsonLd(crumbs, Astro.site),
+  serviceJsonLd({
+    name: 'Dépannage électrique et climatisation 24h/24',
+    description: 'Dépannage électrique et de climatisation 7j/7 et 24h/24 dans l’est montpelliérain.',
+    areaServed: serviceArea.map((c) => c.name),
+    site: Astro.site,
+  }),
+  faqJsonLd(faq),
+];
+---
+
+<BaseLayout
+  title="Dépannage électrique 24h/24 à Vendargues et alentours | R-ELEC"
+  description="Panne de courant, disjoncteur qui saute, clim en panne ? Dépannage 7j/7 et 24h/24 à Vendargues, Castries, Mauguio, Lunel et Montpellier. Appelez le 06 19 91 61 19."
+  jsonLd={jsonLd}
+>
+  <section class="container-site pt-2 sm:pt-3" aria-labelledby="titre-page">
+    <div class="on-dark relative isolate overflow-hidden rounded-[var(--radius-panel)] bg-navy-900 text-white lg:grid lg:grid-cols-[1.15fr_1fr]">
+      <div class="relative z-10 px-6 pt-8 pb-10 sm:px-10 sm:pt-10 sm:pb-12 lg:px-14 lg:py-14">
+        <nav aria-label="Fil d'Ariane">
+          <ol class="flex items-center gap-1.5 text-sm text-on-dark-muted">
+            <li><a href="/" class="hover:text-white">Accueil</a></li>
+            <li class="flex items-center gap-1.5"><span aria-hidden="true">/</span><span aria-current="page" class="text-white">Dépannage urgent</span></li>
+          </ol>
+        </nav>
+        <h1 id="titre-page" class="mt-8 text-[2.6rem] leading-[1.02] sm:text-6xl lg:mt-12 lg:text-[4rem]">
+          Une panne&nbsp;? <span class="text-volt">Appelez, on arrive.</span>
+        </h1>
+        <p class="mt-5 max-w-[34rem] text-lg leading-relaxed text-on-dark">
+          Électricité ou climatisation, de jour comme de nuit. C’est l’un de nous qui décroche, et l’un de nous qui se déplace.
+        </p>
+
+        <a
+          href={phone.href}
+          class="group mt-9 flex w-full max-w-[30rem] items-center gap-4 rounded-[1.25rem] bg-volt p-4 pr-6 text-navy-950 shadow-[0_2px_6px_rgb(7_15_34/0.25),0_20px_40px_-24px_rgb(7_15_34/0.8)] transition-transform active:translate-y-px sm:p-5"
+        >
+          <span class="grid size-12 shrink-0 place-items-center rounded-full bg-navy-900 text-volt sm:size-14">
+            <Icon name="phone" size={26} />
+          </span>
+          <span>
+            <span class="block text-sm font-semibold">Appeler maintenant</span>
+            <span class="block font-mono text-[1.3rem] leading-tight font-medium tracking-[-0.05em] whitespace-nowrap tabular min-[400px]:text-[1.5rem] sm:text-[2.1rem]">{phone.display}</span>
+          </span>
+        </a>
+        <p class="mt-5 flex items-center gap-2.5 text-sm font-medium text-on-dark">
+          <span class="live-dot"></span>
+          Ligne ouverte {company.emergency.short}, nuits, week-ends et jours fériés
+        </p>
+        <p class="mt-3 text-sm text-on-dark-muted">
+          Ligne occupée&nbsp;? Essayez le <a href={company.phones.secondary.href} class="font-semibold text-white underline tabular">{company.phones.secondary.display}</a>.
+        </p>
+      </div>
+      <div class="relative h-64 sm:h-80 lg:h-auto">
+        <Picture
+          src={vansPhoto}
+          alt="Les deux utilitaires R-ELEC, floqués au nom de l’entreprise"
+          formats={['avif', 'webp']}
+          widths={[480, 720, 960, 1280, 1600]}
+          sizes="(min-width: 1024px) 45vw, 100vw"
+          loading="eager"
+          fetchpriority="high"
+          class="absolute inset-0 size-full object-cover object-[25%_60%]"
+          pictureAttributes={{ class: 'contents' }}
+        />
+        <div class="absolute inset-0 bg-[linear-gradient(180deg,rgb(11_22_48/1)_0%,rgb(11_22_48/0)_35%)] lg:bg-[linear-gradient(90deg,rgb(11_22_48/1)_0%,rgb(11_22_48/0)_35%)]"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-site pt-16 lg:pt-24" aria-labelledby="urgences-titre">
+    <h2 id="urgences-titre" class="reveal max-w-2xl text-[2rem] sm:text-[2.5rem] lg:text-[2.75rem]">
+      <span class="text-ink-soft">Les urgences</span>{' '}<span class="text-brand">que nous traitons.</span>
+    </h2>
+    <ul class="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+      {emergencies.map((e) => (
+        <li class="reveal flex gap-4">
+          <span class="grid size-12 shrink-0 place-items-center rounded-full bg-volt text-navy-950">
+            <Icon name={e.icon} size={22} />
+          </span>
+          <span>
+            <span class="block text-lg font-semibold tracking-[-0.015em]">{e.title}</span>
+            <span class="mt-1 block text-ink-muted">{e.text}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="container-site pt-16 lg:pt-24" aria-labelledby="securite-titre">
+    <div class="grid gap-8 rounded-[var(--radius-panel)] bg-panel px-6 py-10 sm:px-10 sm:py-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16 lg:px-14 lg:py-14">
+      <div class="reveal">
+        <h2 id="securite-titre" class="text-[2rem] sm:text-[2.5rem]">En attendant notre arrivée</h2>
+        <p class="mt-4 max-w-md text-lg text-ink-muted">Quelques gestes simples pour limiter les risques. Au moindre doute, ne touchez à rien et appelez-nous.</p>
+        <p class="mt-6 flex gap-3 text-[0.95rem] text-ink">
+          <Icon name="circle-alert" size={20} class="mt-0.5 shrink-0 text-[#b23c0c]" />
+          <span>Incendie ou personne électrisée&nbsp;: appelez d’abord les secours, le <strong>18</strong> ou le <strong>112</strong>.</span>
+        </p>
+      </div>
+      <ol class="reveal divide-y divide-[#dfe5f0] border-y border-[#dfe5f0]">
+        {safety.map((s, i) => (
+          <li class="flex gap-4 py-5">
+            <span class="font-mono text-sm font-medium text-brand tabular" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span>{s}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="container-site pt-16 lg:pt-24" aria-labelledby="faq-titre">
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
+      <h2 id="faq-titre" class="reveal text-[2rem] sm:text-[2.5rem]">
+        <span class="text-ink-soft">Avant d’appeler,</span>{' '}<span class="text-brand">vous vous demandez…</span>
+      </h2>
+      <Faq items={faq} name="faq-depannage" />
+    </div>
+  </section>
+
+  <section class="container-site pt-16 lg:pt-24" aria-label="Appeler le dépannage">
+    <div class="on-dark flex flex-col items-start gap-6 rounded-[var(--radius-panel)] bg-navy-900 px-6 py-10 text-white sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-14">
+      <p class="text-[1.75rem] leading-tight font-semibold tracking-[-0.03em] sm:text-[2.25rem]">
+        Une panne en cours&nbsp;? <span class="text-volt">N’attendez pas.</span>
+      </p>
+      <Button href={phone.href} variant="volt" size="lg" icon="phone" class="tabular">Appeler le {phone.display}</Button>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,143 @@
+@import "@fontsource-variable/onest/wght.css";
+@import "@fontsource/martian-mono/latin-500.css";
+@import "tailwindcss";
+
+/* ── Design tokens R-ELEC ─────────────────────────────────────────────
+   Bleu #204d9c (marque) · Jaune #fcd93d (accent rare) · Blanc dominant.
+   Règles : jamais de texte jaune sur fond clair ; sur jaune, texte navy ;
+   sur bleu / navy, texte blanc ou jaune. */
+@theme {
+  --color-brand: #204d9c;
+  --color-brand-700: #173a78;
+  --color-brand-50: #eef3fb;
+
+  --color-navy-950: #070f22;
+  --color-navy-900: #0b1630;
+  --color-navy-800: #14264d;
+  --color-navy-700: #1d3363;
+
+  --color-volt: #fcd93d;
+  --color-volt-600: #f0c419;
+
+  --color-ink: #0f1f3d;
+  --color-ink-muted: #55658a;
+  --color-ink-soft: #6f7d9c;
+  --color-line: #e3e8f2;
+  --color-panel: #f3f5f9;
+
+  --color-on-dark: #e9eef8;
+  --color-on-dark-muted: #aab8d6;
+  --color-line-dark: rgb(170 184 214 / 0.18);
+
+  --font-sans: "Onest Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Martian Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --radius-card: 1.25rem;
+  --radius-panel: 1.75rem;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --shadow-card: 0 1px 2px rgb(15 31 61 / 0.06), 0 12px 32px -16px rgb(15 31 61 / 0.18);
+  --shadow-float: 0 2px 6px rgb(7 15 34 / 0.12), 0 32px 64px -28px rgb(7 15 34 / 0.55);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    color-scheme: light;
+    accent-color: var(--color-brand);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  body {
+    background: #fff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    font-weight: 600;
+  }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--color-volt); color: var(--color-navy-950); }
+  a { text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .on-dark :focus-visible { outline-color: var(--color-volt); }
+  input, select, textarea { caret-color: var(--color-brand); }
+  html { scrollbar-color: #b9c4da transparent; }
+}
+
+@layer components {
+  .container-site {
+    width: 100%;
+    max-width: 81rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) { .container-site { padding-inline: 1.5rem; } }
+  @media (min-width: 1024px) { .container-site { padding-inline: 2.5rem; } }
+
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* Témoin « ligne ouverte » : seul élément animé en continu. */
+  .live-dot {
+    position: relative;
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--color-volt);
+    flex: none;
+  }
+  .live-dot::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    background: var(--color-volt);
+    opacity: 0.35;
+    animation: live-pulse 2.4s var(--ease-out-expo) infinite;
+  }
+  @keyframes live-pulse {
+    0% { transform: scale(0.6); opacity: 0.45; }
+    70%, 100% { transform: scale(1.9); opacity: 0; }
+  }
+
+  /* Apparition au scroll, sans JS, uniquement si le navigateur la supporte
+     et si l'utilisateur accepte le mouvement. Le contenu reste visible par défaut. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        animation: reveal-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 40%;
+      }
+      @keyframes reveal-in {
+        from { opacity: 0; transform: translateY(1.5rem); filter: blur(4px); }
+        to { opacity: 1; transform: none; filter: none; }
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .live-dot::after { animation: none; }
+  }
+}
+
+@layer components {
+  /* Sur fond clair, le jaune seul manque de contraste : on l'entoure d'un liseré navy. */
+  .live-dot-on-light { box-shadow: 0 0 0 2px var(--color-navy-900); }
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>R-ELEC : mix</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--n950:#070f22;--n900:#0b1630;--n800:#14264d;--b:#204d9c;--y:#fcd93d;--ink:#0f1f3d;--mut:#55658a;--soft:#f3f5f9;--bd:#e3e8f2;--dtxt:#e9eef8;--dmut:#aab8d6}
+*{box-sizing:border-box;margin:0}
+body{width:1440px;background:#fff;font-family:Onest,system-ui,sans-serif;color:var(--ink)}
+.wrap{width:1296px;margin:0 auto}
+header{height:84px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;gap:10px;align-items:center;font-weight:700;font-size:22px;color:var(--b)}
+.logo i{width:34px;height:34px;border-radius:50%;background:var(--b)}
+nav{display:flex;gap:30px;font-size:15px;font-weight:500}
+.hb{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:999px;font-weight:600;font-size:15px}
+.y{background:var(--y);color:var(--n950)} .ol{border:1.5px solid var(--ink)} .nb{background:var(--n900);color:#fff}
+.hero{position:relative;height:620px;border-radius:28px;overflow:hidden;background:linear-gradient(90deg,rgba(7,15,34,.88) 0%,rgba(7,15,34,.55) 45%,rgba(7,15,34,.15) 100%),linear-gradient(135deg,#6f82a6,#33496f);color:#fff}
+.hero .ph{position:absolute;left:28px;top:24px;font-size:12px;color:#e9eef8}
+.hc{position:absolute;left:56px;bottom:56px;max-width:640px}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:8px 14px;border-radius:999px}
+.tag b{width:8px;height:8px;border-radius:50%;background:var(--y);box-shadow:0 0 0 4px rgba(252,217,61,.25)}
+h1{font-size:64px;line-height:1.02;font-weight:600;letter-spacing:-.035em;margin-top:22px}
+h1 em{font-style:normal;color:var(--y)}
+.hc p{font-size:18px;line-height:1.55;color:var(--dtxt);margin-top:18px;max-width:520px}
+.ctas{display:flex;gap:12px;margin-top:28px}
+.gl{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff}
+.form{position:absolute;right:32px;top:32px;width:400px;background:#fff;color:var(--ink);border-radius:20px;padding:28px;box-shadow:0 30px 60px -30px rgba(7,15,34,.6)}
+.form .ft{font-size:22px;font-weight:600}
+.form p{font-size:14px;color:var(--mut);margin-top:6px}
+.fl{font-size:13px;font-weight:600;margin-top:14px}
+.in{height:46px;border:1px solid var(--bd);border-radius:12px;margin-top:6px;display:flex;align-items:center;padding:0 14px;color:#64738f;font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form .btn{width:100%;justify-content:center;margin-top:18px;border-radius:12px}
+.chips{position:absolute;right:32px;bottom:32px;display:flex;flex-wrap:wrap;gap:8px;width:400px;justify-content:flex-end}
+.chip{font-size:13px;font-weight:500;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(7,15,34,.4)}
+.cities{display:flex;justify-content:space-between;padding:40px 40px;color:#55658a;font-weight:600;font-size:19px}
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;padding:72px 0 40px;align-items:end}
+h2{font-size:46px;line-height:1.08;font-weight:600;letter-spacing:-.03em}
+h2 .m{color:#6f7d9c} h2 .k{color:var(--b)}
+.about p{color:var(--mut);font-size:17px;line-height:1.65}
+.pics{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pic{height:320px;border-radius:24px;background:linear-gradient(135deg,#8c9cbb,#4a5f86);position:relative}
+.pic span{position:absolute;left:18px;bottom:14px;color:#fff;font-size:12px}
+.stats{margin-top:96px;background:var(--n900);border-radius:28px;padding:72px 64px;color:var(--dtxt);display:grid;grid-template-columns:1fr 1.3fr;gap:56px;align-items:center}
+.stats h2 em{font-style:normal;color:var(--y)}
+.stats p{color:var(--dmut);font-size:17px;line-height:1.65;margin-top:18px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tile{background:var(--n800);border-radius:18px;padding:24px;height:150px;display:flex;flex-direction:column;justify-content:space-between}
+.tile strong{font-family:"Martian Mono",ui-monospace,monospace;font-size:36px;font-weight:500;color:#fff}
+.tile strong i{font-style:normal;color:var(--y)}
+.tile small{color:var(--dmut);font-size:14px}
+.svc{margin-top:96px;background:var(--soft);border-radius:28px;padding:72px 64px;text-align:center}
+.svc p.lead{color:var(--mut);font-size:17px;margin-top:12px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;text-align:center}
+.card{background:#fff;border-radius:22px;padding:34px 28px}
+.card .ic{width:52px;height:52px;border-radius:50%;background:var(--y);margin:0 auto;display:grid;place-items:center;font-weight:700}
+.card h3{font-size:19px;font-weight:600;margin-top:18px}
+.card p{color:var(--mut);font-size:15px;line-height:1.55;margin-top:8px}
+.card.dk{background:var(--n900);color:#fff} .card.dk p{color:var(--dmut)}
+</style></head><body>
+<div class="wrap">
+<header><div class="logo"><i></i>R-ELEC</div><nav><span>Électricité</span><span>Climatisation</span><span>Dépannage 24h/24</span><span>Réalisations</span><span>Contact</span></nav><div class="hb"><span class="btn ol">06 19 91 61 19</span><span class="btn y">Devis gratuit</span></div></header>
+<section class="hero"><span class="ph">Photo : électricien au tableau (temporaire)</span>
+<div class="hc"><span class="tag"><b></b>Dépannage 7j/7 · 24h/24</span>
+<h1>Plus de courant ? Clim en panne ?<br><em>On arrive.</em></h1>
+<p>Sébastien Rouvière et ses deux fils, électriciens et climaticiens à Vendargues depuis 2006. Aucun sous-traitant.</p>
+<div class="ctas"><span class="btn y">☎ Appeler le 06 19 91 61 19</span><span class="btn gl">Nos services →</span></div></div>
+<div class="form"><h2 class="ft">Demande de devis</h2><p>Gratuit, avec une réponse rapide par téléphone.</p>
+<div class="two"><div><div class="fl">Nom</div><div class="in">Votre nom</div></div><div><div class="fl">Téléphone</div><div class="in">06…</div></div></div>
+<div class="fl">Ville</div><div class="in">Vendargues, Castries…</div>
+<div class="fl">Votre besoin</div><div class="in">Choisir ▾</div>
+<span class="btn y">Envoyer ma demande</span></div>
+<div class="chips"><span class="chip">Tableau électrique</span><span class="chip">Mise aux normes</span><span class="chip">Climatisation</span><span class="chip">Pompe à chaleur</span></div>
+</section>
+<div class="cities"><span>Vendargues</span><span>Castries</span><span>Mauguio</span><span>Lunel</span><span>Le Crès</span><span>Baillargues</span><span>Montpellier</span></div>
+<section class="about"><h2><span class="m">Une famille d'artisans,</span> <span class="k">du tableau électrique à la pompe à chaleur.</span></h2><p>Un père et ses deux fils qui étudient, posent et dépannent eux-mêmes. Vous gardez les mêmes interlocuteurs du devis au dépannage, et personne d'autre n'intervient chez vous.</p></section>
+<div class="pics"><div class="pic"><span>Photo : électricité (temporaire)</span></div><div class="pic"><span>Photo : climatisation (temporaire)</span></div></div>
+<section class="stats"><div><h2>Joignables <em>jour et nuit</em>, depuis 2006.</h2><p>Une panne ne prévient pas. La ligne de dépannage reste ouverte 7 jours sur 7, 24 heures sur 24.</p></div>
+<div class="tiles"><div class="tile"><strong>2006</strong><small>En activité depuis</small></div><div class="tile"><strong>24<i>/</i>7</strong><small>Dépannage</small></div><div class="tile"><strong>5<i>/5</i></strong><small>Note Google</small></div><div class="tile"><strong>0</strong><small>Sous-traitant</small></div><div class="tile"><strong>3</strong><small>Artisans, une famille</small></div><div class="tile"><strong>2</strong><small>Métiers : élec + clim</small></div></div></section>
+<section class="svc"><h2>Tout pour <span class="k">votre installation</span></h2><p class="lead">Électricité générale et climatisation, en neuf comme en rénovation.</p>
+<div class="cards"><div class="card"><div class="ic">⚡</div><h3>Dépannage électrique</h3><p>Recherche de panne, disjoncteur qui saute, remise en service.</p></div><div class="card dk"><div class="ic">▦</div><h3>Tableau &amp; mise aux normes</h3><p>Mise en conformité NF C 15-100 et mise en sécurité.</p></div><div class="card"><div class="ic">❄</div><h3>Climatisation</h3><p>Split, gainable, cassette, réversible.</p></div><div class="card"><div class="ic">♨</div><h3>Pompe à chaleur</h3><p>PAC et ballon thermodynamique.</p></div><div class="card"><div class="ic">✦</div><h3>Éclairage &amp; domotique</h3><p>LED intérieur et extérieur, interphone, RJ45.</p></div><div class="card"><div class="ic">⟳</div><h3>Entretien clim</h3><p>Nettoyage, contrôle et dépannage.</p></div></div></section>
+<div style="height:80px"></div>
+</div>
+</body></html>

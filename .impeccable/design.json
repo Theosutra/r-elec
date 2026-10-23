@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T12:00:00Z",
+  "title": "Design System: R-ELEC",
+  "extensions": {
+    "colorMeta": {
+      "brand": { "role": "primary", "displayName": "Workshop Blue", "canonical": "#204d9c", "tonalRamp": ["#0c1d3d", "#132c5c", "#173a78", "#204d9c", "#4a72bb", "#86a3d6", "#c4d3ee", "#eef3fb"] },
+      "brand-700": { "role": "primary", "displayName": "Deep Workshop Blue", "canonical": "#173a78", "tonalRamp": ["#0a1a38", "#10264f", "#173a78", "#204d9c", "#4a72bb", "#86a3d6", "#c4d3ee", "#eef3fb"] },
+      "brand-50": { "role": "primary", "displayName": "Blue Mist", "canonical": "#eef3fb", "tonalRamp": ["#0c1d3d", "#173a78", "#204d9c", "#4a72bb", "#86a3d6", "#c4d3ee", "#dfe8f7", "#eef3fb"] },
+      "navy-950": { "role": "secondary", "displayName": "Deep Night", "canonical": "#070f22", "tonalRamp": ["#070f22", "#0b1630", "#14264d", "#1d3363", "#33497a", "#5d7099", "#a3b0cb", "#e4e9f3"] },
+      "navy-900": { "role": "secondary", "displayName": "Night Navy", "canonical": "#0b1630", "tonalRamp": ["#070f22", "#0b1630", "#14264d", "#1d3363", "#33497a", "#5d7099", "#a3b0cb", "#e4e9f3"] },
+      "navy-800": { "role": "secondary", "displayName": "Tile Navy", "canonical": "#14264d", "tonalRamp": ["#070f22", "#0b1630", "#14264d", "#1d3363", "#33497a", "#5d7099", "#a3b0cb", "#e4e9f3"] },
+      "navy-700": { "role": "secondary", "displayName": "Lifted Navy", "canonical": "#1d3363", "tonalRamp": ["#070f22", "#0b1630", "#14264d", "#1d3363", "#33497a", "#5d7099", "#a3b0cb", "#e4e9f3"] },
+      "volt": { "role": "tertiary", "displayName": "Volt Yellow", "canonical": "#fcd93d", "tonalRamp": ["#3d3005", "#6b540a", "#a3800f", "#d6a814", "#f0c419", "#fcd93d", "#fde88a", "#fef7d6"] },
+      "volt-600": { "role": "tertiary", "displayName": "Pressed Volt", "canonical": "#f0c419", "tonalRamp": ["#3d3005", "#6b540a", "#a3800f", "#d6a814", "#f0c419", "#fcd93d", "#fde88a", "#fef7d6"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0f1f3d", "tonalRamp": ["#0f1f3d", "#2a3a5c", "#55658a", "#6f7d9c", "#9aa6c0", "#c9d2e3", "#e3e8f2", "#f3f5f9"] },
+      "ink-muted": { "role": "neutral", "displayName": "Muted Ink", "canonical": "#55658a", "tonalRamp": ["#0f1f3d", "#2a3a5c", "#55658a", "#6f7d9c", "#9aa6c0", "#c9d2e3", "#e3e8f2", "#f3f5f9"] },
+      "ink-soft": { "role": "neutral", "displayName": "Soft Ink", "canonical": "#6f7d9c", "tonalRamp": ["#0f1f3d", "#2a3a5c", "#55658a", "#6f7d9c", "#9aa6c0", "#c9d2e3", "#e3e8f2", "#f3f5f9"] },
+      "line": { "role": "neutral", "displayName": "Hairline", "canonical": "#e3e8f2", "tonalRamp": ["#0f1f3d", "#2a3a5c", "#55658a", "#6f7d9c", "#9aa6c0", "#c9d2e3", "#e3e8f2", "#f3f5f9"] },
+      "panel": { "role": "neutral", "displayName": "Panel Grey", "canonical": "#f3f5f9", "tonalRamp": ["#0f1f3d", "#2a3a5c", "#55658a", "#6f7d9c", "#9aa6c0", "#c9d2e3", "#e3e8f2", "#f3f5f9"] },
+      "white": { "role": "neutral", "displayName": "White Ground", "canonical": "#ffffff", "tonalRamp": ["#0f1f3d", "#55658a", "#9aa6c0", "#c9d2e3", "#e3e8f2", "#f3f5f9", "#fafbfd", "#ffffff"] },
+      "on-dark": { "role": "neutral", "displayName": "On-Dark", "canonical": "#e9eef8", "tonalRamp": ["#0b1630", "#14264d", "#33497a", "#5d7099", "#aab8d6", "#cdd6ea", "#e9eef8", "#ffffff"] },
+      "on-dark-muted": { "role": "neutral", "displayName": "On-Dark Muted", "canonical": "#aab8d6", "tonalRamp": ["#0b1630", "#14264d", "#33497a", "#5d7099", "#aab8d6", "#cdd6ea", "#e9eef8", "#ffffff"] },
+      "line-dark": { "role": "neutral", "displayName": "Dark Hairline", "canonical": "rgb(170 184 214 / 0.18)", "tonalRamp": ["#0b1630", "#14264d", "#1d3363", "#273c6a", "#33497a", "#5d7099", "#aab8d6", "#e9eef8"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Home H1 only; payoff phrase in volt on the navy hero." },
+      "headline": { "displayName": "Headline", "purpose": "Two-tone section H2s." },
+      "title": { "displayName": "Title", "purpose": "Card, step and photo-card H3s." },
+      "body": { "displayName": "Body", "purpose": "Running text; leads at 1.125rem, measures capped at 34 to 38rem." },
+      "label": { "displayName": "Label", "purpose": "Form labels, footer column heads; sentence case, normal tracking." },
+      "figure": { "displayName": "Figure", "purpose": "Martian Mono proof figures, ratings, display-size phone numbers, step indices." }
+    },
+    "shadows": [
+      { "name": "card", "value": "0 1px 2px rgb(15 31 61 / 0.06), 0 12px 32px -16px rgb(15 31 61 / 0.18)", "purpose": "Review cards at rest; white service cards on hover." },
+      { "name": "float", "value": "0 2px 6px rgb(7 15 34 / 0.12), 0 32px 64px -28px rgb(7 15 34 / 0.55)", "purpose": "Quote form over the hero, mobile menu, featured navy card on hover." },
+      { "name": "volt-glow", "value": "0 1px 0 rgb(255 255 255 / 0.5) inset, 0 10px 24px -12px rgb(240 196 25 / 0.9)", "purpose": "Yellow pill button only." },
+      { "name": "focus-halo", "value": "0 0 0 3px rgb(32 77 156 / 0.18)", "purpose": "Focused form fields, with brand border." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Card lift, arrow nudge, menu slide, FAQ height, live pulse." },
+      { "name": "live-pulse", "value": "2.4s ease-out-expo infinite; halo scale 0.6 to 1.9, opacity 0.45 to 0", "purpose": "The only continuous animation; off under reduced motion." },
+      { "name": "reveal-in", "value": "animation-timeline: view(); range entry 0% to 40%; opacity 0, translateY(1.5rem), blur(4px) to none", "purpose": "Once-only scroll fade; only with scroll-timeline support and no-preference motion." },
+      { "name": "hover-lift", "value": "translateY(-2px), 300ms ease-out-expo", "purpose": "Service cards on hover/focus." },
+      { "name": "button-state", "value": "200ms ease-out; active translateY(1px)", "purpose": "Button colour and press feedback." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Volt Button",
+      "kind": "button",
+      "refersTo": "button-volt",
+      "description": "Primary call or quote action, yellow pill with navy text.",
+      "html": "<a href=\"#\" class=\"ds-btn-volt\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384\"/></svg>Appeler le 06 19 91 61 19</a>",
+      "css": ".ds-btn-volt { display: inline-flex; align-items: center; gap: 0.5rem; height: 3rem; padding: 0 1.25rem; border-radius: 9999px; background: var(--color-volt, #fcd93d); color: var(--color-navy-950, #070f22); font-family: 'Onest Variable', system-ui, sans-serif; font-weight: 600; font-size: 0.95rem; font-variant-numeric: tabular-nums; text-decoration: none; white-space: nowrap; box-shadow: 0 1px 0 rgb(255 255 255 / 0.5) inset, 0 10px 24px -12px rgb(240 196 25 / 0.9); transition: background-color 0.2s ease-out, transform 0.2s ease-out; } .ds-btn-volt:hover { background: var(--color-volt-600, #f0c419); } .ds-btn-volt:active { transform: translateY(1px); } .ds-btn-volt:focus-visible { outline: 2px solid var(--color-brand, #204d9c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Navy Button",
+      "kind": "button",
+      "refersTo": "button-navy",
+      "description": "Secondary action on white.",
+      "html": "<a href=\"#\" class=\"ds-btn-navy\">Demander un devis</a>",
+      "css": ".ds-btn-navy { display: inline-flex; align-items: center; height: 3rem; padding: 0 1.25rem; border-radius: 9999px; background: var(--color-navy-900, #0b1630); color: #fff; font-family: 'Onest Variable', system-ui, sans-serif; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background-color 0.2s ease-out, transform 0.2s ease-out; } .ds-btn-navy:hover { background: var(--color-navy-800, #14264d); } .ds-btn-navy:active { transform: translateY(1px); } .ds-btn-navy:focus-visible { outline: 2px solid var(--color-brand, #204d9c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Header phone button on white; fills to ink on hover.",
+      "html": "<a href=\"#\" class=\"ds-btn-outline\">06 19 91 61 19</a>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; height: 3rem; padding: 0 1.25rem; border-radius: 9999px; border: 1px solid rgb(15 31 61 / 0.8); color: var(--color-ink, #0f1f3d); background: transparent; font-family: 'Onest Variable', system-ui, sans-serif; font-weight: 600; font-size: 0.95rem; font-variant-numeric: tabular-nums; text-decoration: none; transition: background-color 0.2s ease-out, color 0.2s ease-out; } .ds-btn-outline:hover { background: var(--color-ink, #0f1f3d); color: #fff; } .ds-btn-outline:focus-visible { outline: 2px solid var(--color-brand, #204d9c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Glass Button on Navy",
+      "kind": "button",
+      "refersTo": "button-outline-dark",
+      "description": "Secondary action on navy panels and heroes.",
+      "html": "<div style=\"background:#0b1630;padding:1.5rem;border-radius:1.25rem\"><a href=\"#\" class=\"ds-btn-glass\">Nos services<svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a></div>",
+      "css": ".ds-btn-glass { display: inline-flex; align-items: center; gap: 0.625rem; height: 3.5rem; padding: 0 1.75rem; border-radius: 9999px; border: 1px solid rgb(255 255 255 / 0.35); background: rgb(255 255 255 / 0.1); color: #fff; font-family: 'Onest Variable', system-ui, sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none; transition: background-color 0.2s ease-out; } .ds-btn-glass svg { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-glass:hover { background: rgb(255 255 255 / 0.2); } .ds-btn-glass:hover svg { transform: translateX(2px); } .ds-btn-glass:focus-visible { outline: 2px solid var(--color-volt, #fcd93d); outline-offset: 3px; }"
+    },
+    {
+      "name": "Quote Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Text field of the quote form, label above.",
+      "html": "<label class=\"ds-field-label\">Téléphone<input class=\"ds-field\" type=\"tel\" placeholder=\"06 12 34 56 78\"></label>",
+      "css": ".ds-field-label { display: block; font-family: 'Onest Variable', system-ui, sans-serif; font-size: 0.8125rem; font-weight: 600; color: var(--color-ink, #0f1f3d); } .ds-field { display: block; margin-top: 0.375rem; height: 3rem; width: 100%; max-width: 20rem; padding: 0 0.875rem; border-radius: 0.75rem; border: 1px solid var(--color-line, #e3e8f2); background: #fff; color: var(--color-ink, #0f1f3d); font: inherit; font-size: 0.95rem; font-weight: 400; outline: none; caret-color: var(--color-brand, #204d9c); transition: border-color 0.15s, box-shadow 0.15s; } .ds-field::placeholder { color: var(--color-ink-muted, #55658a); } .ds-field:hover { border-color: #c9d2e3; } .ds-field:focus { border-color: var(--color-brand, #204d9c); box-shadow: 0 0 0 3px rgb(32 77 156 / 0.18); }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "button-outline",
+      "description": "Pill nav items; current page in blue mist.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Électricité</a><a href=\"#\">Climatisation</a><a href=\"#\">Dépannage</a><a href=\"#\">Réalisations</a><a href=\"#\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 0.25rem; padding: 1rem; background: rgb(255 255 255 / 0.95); border-bottom: 1px solid rgb(227 232 242 / 0.7); font-family: 'Onest Variable', system-ui, sans-serif; } .ds-nav a { padding: 0.5rem 0.875rem; border-radius: 9999px; font-size: 0.95rem; font-weight: 500; color: var(--color-ink, #0f1f3d); text-decoration: none; transition: background-color 0.15s; } .ds-nav a:hover { background: var(--color-panel, #f3f5f9); } .ds-nav a[aria-current=page] { background: var(--color-brand-50, #eef3fb); color: var(--color-brand, #204d9c); } .ds-nav a:focus-visible { outline: 2px solid var(--color-brand, #204d9c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "service-card",
+      "description": "Centred service card with a yellow icon pastille; lifts on hover.",
+      "html": "<a href=\"#\" class=\"ds-service-card\"><span class=\"ds-pastille\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z\"/></svg></span><h3>Mise aux normes</h3><p>Tableau, NF C 15-100, mise en sécurité.</p><span class=\"ds-more\">En savoir plus</span></a>",
+      "css": ".ds-service-card { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 22rem; padding: 2rem; border-radius: 1.25rem; background: #fff; color: var(--color-ink, #0f1f3d); text-decoration: none; font-family: 'Onest Variable', system-ui, sans-serif; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1); } .ds-service-card:hover, .ds-service-card:focus-visible { transform: translateY(-2px); box-shadow: 0 1px 2px rgb(15 31 61 / 0.06), 0 12px 32px -16px rgb(15 31 61 / 0.18); } .ds-service-card:focus-visible { outline: 2px solid var(--color-brand, #204d9c); outline-offset: 3px; } .ds-pastille { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 9999px; background: var(--color-volt, #fcd93d); color: var(--color-navy-950, #070f22); } .ds-service-card h3 { margin: 1.5rem 0 0; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; } .ds-service-card p { margin: 0.625rem 0 0; font-size: 0.975rem; line-height: 1.625; color: var(--color-ink-muted, #55658a); } .ds-more { padding-top: 1.5rem; font-size: 0.875rem; font-weight: 600; color: var(--color-brand, #204d9c); }"
+    },
+    {
+      "name": "Stat Tile",
+      "kind": "custom",
+      "refersTo": "stat-tile",
+      "description": "Mono proof figure on tile navy, yellow suffix; brightens on hover.",
+      "html": "<div style=\"background:#0b1630;padding:1.5rem;border-radius:1.75rem;display:flex;gap:0.875rem\"><div class=\"ds-stat\"><p class=\"ds-stat-value\">24<span>/7</span></p><p class=\"ds-stat-label\">Dépannage, nuits et week-ends compris</p></div><div class=\"ds-stat\"><p class=\"ds-stat-value\">2006</p><p class=\"ds-stat-label\">En activité depuis</p></div></div>",
+      "css": ".ds-stat { display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; min-height: 9rem; width: 11rem; padding: 1.5rem; border-radius: 1rem; background: var(--color-navy-800, #14264d); transition: background-color 0.3s; } .ds-stat:hover { background: var(--color-navy-700, #1d3363); } .ds-stat-value { margin: 0; font-family: 'Martian Mono', ui-monospace, monospace; font-weight: 500; font-size: 2.25rem; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: #fff; } .ds-stat-value span { color: var(--color-volt, #fcd93d); } .ds-stat-label { margin: 0; font-family: 'Onest Variable', system-ui, sans-serif; font-size: 0.875rem; color: var(--color-on-dark-muted, #aab8d6); }"
+    },
+    {
+      "name": "Live Dot Status",
+      "kind": "custom",
+      "refersTo": "icon-pastille",
+      "description": "Pulsing yellow dot prefixing every 24/7 availability line.",
+      "html": "<div style=\"background:#0b1630;padding:1.25rem;border-radius:1.25rem\"><p class=\"ds-live\"><span class=\"ds-live-dot\"></span>Ligne ouverte 7j/7, 24h/24, nuits et week-ends compris</p></div>",
+      "css": ".ds-live { display: flex; align-items: center; gap: 0.625rem; margin: 0; font-family: 'Onest Variable', system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; color: var(--color-on-dark, #e9eef8); } .ds-live-dot { position: relative; display: inline-block; width: 0.5rem; height: 0.5rem; border-radius: 999px; background: var(--color-volt, #fcd93d); flex: none; } .ds-live-dot::after { content: ''; position: absolute; inset: -4px; border-radius: inherit; background: var(--color-volt, #fcd93d); opacity: 0.35; animation: ds-live-pulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite; } @keyframes ds-live-pulse { 0% { transform: scale(0.6); opacity: 0.45; } 70%, 100% { transform: scale(1.9); opacity: 0; } } @media (prefers-reduced-motion: reduce) { .ds-live-dot::after { animation: none; } }"
+    },
+    {
+      "name": "Mobile Call Bar",
+      "kind": "custom",
+      "refersTo": "mobile-call-bar",
+      "description": "Sticky bottom bar on mobile: wide volt call pill plus navy quote pill.",
+      "html": "<div class=\"ds-callbar\"><a href=\"#\" class=\"ds-callbar-call\">Appeler</a><a href=\"#\" class=\"ds-callbar-quote\">Devis</a></div>",
+      "css": ".ds-callbar { display: grid; grid-template-columns: 1.35fr 1fr; gap: 0.625rem; max-width: 36rem; padding: 0.625rem 0.75rem; background: rgb(255 255 255 / 0.95); border-top: 1px solid var(--color-line, #e3e8f2); backdrop-filter: blur(6px); font-family: 'Onest Variable', system-ui, sans-serif; } .ds-callbar a { display: inline-flex; align-items: center; justify-content: center; height: 3.5rem; border-radius: 9999px; font-weight: 600; text-decoration: none; } .ds-callbar a:active { transform: translateY(1px); } .ds-callbar a:focus-visible { outline: 2px solid var(--color-brand, #204d9c); outline-offset: 3px; } .ds-callbar-call { background: var(--color-volt, #fcd93d); color: var(--color-navy-950, #070f22); } .ds-callbar-quote { background: var(--color-navy-900, #0b1630); color: #fff; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Open Line",
+    "overview": "R-ELEC reads as a white, airy page that holds a few big rounded blocks: a full-width photo card, deep night-navy panels, soft grey panels. White carries trust. Navy and yellow carry urgency, and they always appear together, the way a lit call-out van shows up at night. The page builds its rhythm from blocks, never from rules: no grid lines, no rails, no hairline scaffolding between sections. Only a generous vertical gap (5rem, then 7rem on desktop) separates sections.\n\nDensity is low and the type is confident: semibold Onest headings with tight tracking, comfortable 1.0625rem body text, and figures set in Martian Mono so the proof (2006, 24/7, 5/5, the phone number) reads like an instrument readout. Only one element moves continuously: the yellow \"line open\" dot that pulses next to every emergency statement. Everything else is still at rest. It lifts or brightens on hover, and fades in once on scroll where the browser supports scroll timelines.\n\nThe brand is strict, per PRODUCT.md: blue `brand` is the identity, yellow `volt` is a rare accent, white dominates, and no other brand hue exists. Yellow never sits as text on a light ground.",
+    "keyCharacteristics": [
+      "White ground, with grey `panel` and navy `navy-900` blocks as the only large surfaces.",
+      "Large rounded blocks (1.75rem), rounded cards (1.25rem), pill buttons.",
+      "Two-tone headlines: grey lead-in, brand-blue payoff on white; white text with a yellow payoff on navy.",
+      "Martian Mono 500 for display figures and large phone numbers.",
+      "Round yellow icon pastilles with navy Lucide line icons.",
+      "CSS-only motion (pulse, scroll reveal, hover lift), all of it cut under reduced motion.",
+      "A sticky two-button call bar on mobile."
+    ],
+    "rules": [
+      { "name": "The No Yellow on White Rule", "body": "Volt is never used as text or as a thin mark on white or panel grey. On a light ground it only appears as a filled button or pastille with navy text, and the live dot on light grounds gets a 2px navy ring.", "section": "colors" },
+      { "name": "The Paired Urgency Rule", "body": "Yellow appears with navy: navy text on a yellow fill, or yellow text on a navy surface. A yellow accent with no navy nearby is off-system.", "section": "colors" },
+      { "name": "The No Third Hue Rule", "body": "Only blue, yellow and their navy/grey derivatives are allowed. Status colours (such as the form error orange) are functional and never decorative.", "section": "colors" },
+      { "name": "The Two-Tone Headline Rule", "body": "Every section H2 splits into a lead-in and a payoff. On white the lead-in is `ink-soft` and the payoff is `brand`. On navy the lead-in is white and the payoff is `volt`. Only one payoff per heading.", "section": "typography" },
+      { "name": "The Instrument Figure Rule", "body": "Numbers that serve as proof, and phone numbers set at display size, use Martian Mono with tabular figures. Phone numbers inside buttons and running text stay in Onest with tabular-nums.", "section": "typography" },
+      { "name": "The French Spacing Rule", "body": "Visible copy goes through the `fr()` helper (`src/lib/typo.ts`), or uses literal `&nbsp;`, so `? ! : ; »` and the opening `«` never orphan at a line break.", "section": "typography" },
+      { "name": "The No Rails Rule", "body": "Sections and blocks are never framed by grid lines, column rails or decorative rules. Hairlines are only allowed as functional list separators (FAQ, safety steps), field borders, and the sticky header and call-bar edges.", "section": "layout" },
+      { "name": "The Lift on Intent Rule", "body": "Cards rise 2px and pick up their shadow only on hover or focus. Stat tiles brighten to `navy-700` instead of moving. Photo cards scale their image 3% and turn their arrow pastille 45 degrees.", "section": "elevation" },
+      { "name": "The One Living Thing Rule", "body": "The live dot (2.4s pulse) is the only element that animates continuously. Scroll reveals (fade, 1.5rem rise, 4px unblur) run once, need `animation-timeline: view()`, and leave content visible by default. Under `prefers-reduced-motion: reduce`, the pulse, reveals, smooth scroll, menu slide and FAQ height transition are all switched off.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep white dominant, and use `panel` and `navy-900` blocks at 1.75rem radius as the only large surfaces.",
+      "Do split every section H2 into an `ink-soft` lead-in and a `brand` payoff on white, or a white lead-in and a `volt` payoff on navy.",
+      "Do set proof figures and display-size phone numbers in Martian Mono 500 with tabular figures.",
+      "Do put the live dot in front of every 24/7 availability statement.",
+      "Do run visible French copy through `fr()` so punctuation never orphans.",
+      "Do gate every animation behind `prefers-reduced-motion: no-preference`, or cancel it under `reduce`."
+    ],
+    "donts": [
+      "Don't set yellow text, or a thin yellow mark, on white or panel grey.",
+      "Don't separate sections or frame blocks with grid lines, column rails or decorative rules.",
+      "Don't put an eyebrow or kicker label above headings. The two-tone H2 does that job.",
+      "Don't introduce a third brand hue, or animate anything continuously other than the live dot.",
+      "Don't use square corners on buttons, cards or photos."
+    ]
+  }
+}

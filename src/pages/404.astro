@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { company } from '../data/company';
+import { mainNav } from '../data/navigation';
+---
+
+<BaseLayout title="Page introuvable | R-ELEC" description="Cette page n’existe pas ou a été déplacée." noindex>
+  <section class="container-site pt-16 pb-8 lg:pt-24">
+    <h1 class="max-w-[16ch] text-[2.6rem] sm:text-6xl">
+      <span class="text-ink-soft">Cette page a</span>{' '}<span class="text-brand">disjoncté.</span>
+    </h1>
+    <p class="mt-5 max-w-xl text-lg text-ink-muted">
+      Erreur 404&nbsp;: elle n’existe pas ou a été déplacée. Reprenez depuis l’accueil, ou appelez-nous directement si vous avez une panne.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <Button href="/" variant="navy" iconEnd="arrow-right">Retour à l’accueil</Button>
+      <Button href={company.phones.main.href} variant="volt" icon="phone" class="tabular">{company.phones.main.display}</Button>
+    </div>
+    <ul class="mt-12 flex flex-wrap gap-x-6 gap-y-2 font-semibold">
+      {mainNav.map((item) => <li><a href={item.href} class="text-brand hover:underline">{item.label}</a></li>)}
+    </ul>
+  </section>
+</BaseLayout>
