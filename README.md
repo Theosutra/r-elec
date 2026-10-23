@@ -92,15 +92,39 @@ Copier une entrée de `src/data/cities.ts`, puis changer le `slug`, la ville et 
 
 ## Déploiement
 
-### Netlify
+### En ligne aujourd'hui : GitHub Pages (préproduction)
+
+- Site : https://theosutra.github.io/r-elec/
+- Dépôt : https://github.com/Theosutra/r-elec
+- Chaque push sur `main` reconstruit et republie le site (`.github/workflows/deploy.yml`, onglet *Actions*).
+- Le site est en **noindex** : Google ne l'indexe pas tant que la variable `PUBLIC_ALLOW_INDEXING` ne vaut pas `true`.
+
+Les réglages se font dans *Settings → Secrets and variables → Actions → Variables* du dépôt :
+
+| Variable | Rôle | Valeur actuelle |
+|---|---|---|
+| `PUBLIC_FORMSPREE_ENDPOINT` | Active l'envoi des formulaires | vide (le formulaire invite à appeler) |
+| `PUBLIC_ALLOW_INDEXING` | `true` = Google peut indexer | vide (noindex) |
+| `PUBLIC_SITE_URL` | Adresse publique | `https://theosutra.github.io` par défaut |
+| `BASE_PATH` | Sous-dossier de publication | `/r-elec` par défaut |
+
+Après un changement de variable, relancer le workflow : *Actions → Déploiement GitHub Pages → Run workflow*.
+
+### Le jour du lancement, avec un nom de domaine
+
+1. Dans *Settings → Pages → Custom domain*, saisir le domaine (ex. `www.r-elec.fr`), puis créer chez le registrar l'enregistrement DNS indiqué par GitHub.
+2. Variables : `PUBLIC_SITE_URL` = `https://www.r-elec.fr`, `BASE_PATH` = `/` et `PUBLIC_ALLOW_INDEXING` = `true`.
+3. Relancer le workflow.
+
+### Autres hébergeurs (Netlify, Vercel, Cloudflare Pages)
 
 - Commande de build : `npm run build`
 - Dossier publié : `dist`
-- Variables d'environnement : `PUBLIC_FORMSPREE_ENDPOINT` et `PUBLIC_SITE_URL`, dans *Site settings → Environment variables*.
+- Variables : celles du tableau ci-dessus. Laisser `BASE_PATH` vide si le site est à la racine du domaine.
 
-### Vercel
+### Build local
 
-Importer le dépôt : Astro est détecté automatiquement. Ajouter les deux variables d'environnement dans *Settings → Environment Variables*.
+En local, laisser `BASE_PATH` vide : le site est servi à la racine (http://localhost:4321). Sous Windows avec Git Bash, pour tester un build avec `BASE_PATH=/r-elec`, préfixer la commande par `MSYS_NO_PATHCONV=1`.
 
 ## Qualité
 

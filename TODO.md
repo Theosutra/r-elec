@@ -31,7 +31,7 @@ Tant qu'une information n'est pas confirmée, le site ne l'affiche pas ou affich
 
 ## Technique et légal
 
-- [ ] **Nom de domaine** définitif → variable `PUBLIC_SITE_URL`.
+- [ ] **Nom de domaine** définitif (le site est en préproduction sur https://theosutra.github.io/r-elec/) → voir README, section « Le jour du lancement ».
 - [ ] **Compte Formspree** (ou équivalent) et adresse de réception des devis → variable `PUBLIC_FORMSPREE_ENDPOINT`. L'envoi de photos par le formulaire de contact demande une offre Formspree payante.
 - [ ] **Hébergeur** retenu (Netlify ou Vercel) : son nom et son adresse vont dans les mentions légales.
 - [ ] **Directeur de la publication** : Sébastien Rouvière ? À confirmer.
