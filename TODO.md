@@ -39,3 +39,11 @@ Tant qu'une information n'est pas confirmée, le site ne l'affiche pas ou affich
 - [ ] **Médiateur de la consommation** auquel R-ELEC adhère (obligatoire pour les particuliers) → `src/pages/mentions-legales.astro`.
 - [ ] **Relire les 5 pages villes** (`src/data/cities.ts`) : distances approximatives, chantiers typiques, communes voisines.
 - [ ] Les mentions `TODO_CLIENT` des pages légales sont **visibles** sur le site : les remplacer toutes avant la mise en ligne.
+
+## SEO hors site (le plus gros levier du référencement local)
+
+- [ ] **Fiche Google Business Profile** : vérifier qu'elle existe et qu'elle est revendiquée. Catégorie principale « Électricien », catégorie secondaire « Entreprise de climatisation ». Lien vers le site, horaires, zone desservie (les 9 communes), photos réelles (camions, chantiers).
+- [ ] **Nom, adresse et téléphone identiques partout** : exactement « R-ELEC », « Lot Les Platanes, 27 rue Jean-François Millet, 34740 Vendargues », « 06 19 91 61 19 », sur Google, Pages Jaunes, les annuaires et le site.
+- [ ] **Google Search Console** : le jour du lancement (domaine définitif + `PUBLIC_ALLOW_INDEXING=true`), ajouter le site et soumettre `sitemap-index.xml`.
+- [ ] **Avis** : envoyer le lien de la fiche Google aux clients satisfaits après chaque chantier, et répondre à chaque avis. Renseigner ensuite les URL dans `company.ratings` (elles alimentent le `sameAs` du JSON-LD).
+- [ ] **Liens locaux** : site de la mairie de Vendargues (annuaire des entreprises), fournisseurs et marques de clim (pages « installateurs »), associations locales.
