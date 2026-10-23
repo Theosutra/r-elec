@@ -65,10 +65,10 @@ export const serviceArea: ServiceAreaCity[] = [
   { name: 'Mauguio', postalCode: '34130', page: '/electricien-mauguio' },
   { name: 'Lunel', postalCode: '34400', page: '/electricien-lunel' },
   { name: 'Montpellier', postalCode: '34000', page: '/climatisation-montpellier' },
-  { name: 'Le Crès', postalCode: '34920' },
-  { name: 'Baillargues', postalCode: '34670' },
-  { name: 'Saint-Aunès', postalCode: '34130' },
-  { name: 'Teyran', postalCode: '34820' },
+  { name: 'Le Crès', postalCode: '34920', page: '/electricien-le-cres' },
+  { name: 'Baillargues', postalCode: '34670', page: '/electricien-baillargues' },
+  { name: 'Saint-Aunès', postalCode: '34130', page: '/electricien-saint-aunes' },
+  { name: 'Teyran', postalCode: '34820', page: '/electricien-teyran' },
 ];
 
 export const yearsOfActivity = (now = new Date()) => now.getFullYear() - company.activitySince;

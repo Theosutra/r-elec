@@ -29,6 +29,8 @@ const jsonLd = [
   breadcrumbJsonLd(crumbs, Astro.site),
   serviceJsonLd({
     name: isClim ? `Climatisation à ${page.city}` : `Électricien à ${page.city}`,
+    serviceType: isClim ? 'Climatisation' : 'Électricien',
+    url: `/${page.slug}`,
     description: page.metaDescription,
     areaServed: [page.city],
     site: Astro.site,

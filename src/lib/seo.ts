@@ -27,14 +27,27 @@ export function faqJsonLd(items: { question: string; answer: string }[]) {
   };
 }
 
-export function serviceJsonLd(opts: { name: string; description: string; areaServed: string[]; site: URL | undefined }) {
+export function serviceJsonLd(opts: {
+  name: string;
+  description: string;
+  areaServed: string[];
+  site: URL | undefined;
+  serviceType?: string;
+  url?: string;
+}) {
   const site = opts.site?.toString().replace(/\/$/, '') ?? '';
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: opts.name,
+    serviceType: opts.serviceType ?? opts.name,
     description: opts.description,
+    ...(opts.url ? { url: new URL(opts.url, opts.site).href } : {}),
     provider: { '@id': `${site}/#entreprise` },
-    areaServed: opts.areaServed.map((name) => ({ '@type': 'City', name })),
+    areaServed: opts.areaServed.map((name) => ({
+      '@type': 'City',
+      name,
+      containedInPlace: { '@type': 'AdministrativeArea', name: 'Hérault' },
+    })),
   };
 }

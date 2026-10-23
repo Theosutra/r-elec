@@ -28,12 +28,12 @@ export type ServicePage = {
 
 export const electricite: ServicePage = {
   slug: 'electricite-generale',
-  metaTitle: 'Électricien à Vendargues : installation, tableau, mise aux normes | R-ELEC',
+  metaTitle: 'Électricité générale à Vendargues, mise aux normes | R-ELEC',
   metaDescription:
-    'Installation électrique neuve et rénovation, tableau, mise aux normes NF C 15-100, dépannage, éclairage LED, RJ45, interphone et domotique. Électricien à Vendargues depuis 2006.',
+    'Électricien à Vendargues : installation neuve et rénovation, tableau, mise aux normes NF C 15-100, dépannage, éclairage LED, RJ45 et domotique.',
   crumb: 'Électricité générale',
-  title: 'Une installation électrique sûre,',
-  highlight: 'posée par la même équipe.',
+  title: 'Électricité générale :',
+  highlight: 'une installation sûre, posée par la même équipe.',
   lead: 'Du simple ajout de prise à la rénovation complète d’une maison, nous étudions, installons et dépannons nous-mêmes votre électricité. Aucun sous-traitant, et un devis clair avant chaque chantier.',
   photoKey: 'electricite',
   photoAlt: 'Électricien au travail sur un câblage (photo d’illustration)',
@@ -134,12 +134,12 @@ export const electricite: ServicePage = {
 
 export const climatisation: ServicePage = {
   slug: 'climatisation-chauffage',
-  metaTitle: 'Climatisation et pompe à chaleur à Vendargues : pose, entretien, dépannage | R-ELEC',
+  metaTitle: 'Climatisation et pompe à chaleur à Vendargues | R-ELEC',
   metaDescription:
-    'Installation de climatisation (split, gainable, cassette, réversible), pompe à chaleur, ballon thermodynamique, entretien et dépannage de clim autour de Vendargues et Montpellier.',
+    'Pose de climatisation (split, gainable, réversible), pompe à chaleur, ballon thermodynamique, entretien et dépannage de clim autour de Vendargues.',
   crumb: 'Climatisation & chauffage',
-  title: 'Le bon confort, été comme hiver,',
-  highlight: 'sans surdimensionner.',
+  title: 'Climatisation et pompe à chaleur :',
+  highlight: 'le bon confort, sans surdimensionner.',
   lead: 'Une climatisation bien choisie et bien posée est silencieuse, économe et dure longtemps. Nous dimensionnons chaque appareil pour vos pièces, l’installons nous-mêmes et en assurons l’entretien.',
   photoKey: 'clim',
   photoAlt: 'Climatisation murale installée dans une pièce (photo d’illustration)',

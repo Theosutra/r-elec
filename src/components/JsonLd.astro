@@ -1,6 +1,8 @@
 ---
 import { company, serviceArea } from '../data/company';
 import { reviews } from '../data/reviews';
+import { electricite, climatisation } from '../data/servicePages';
+import vansPhoto from '../assets/photos/realisations/hero-equipe.jpeg';
 
 interface Props {
   /** Données JSON-LD supplémentaires propres à la page (FAQPage, Service…). */
@@ -10,6 +12,18 @@ interface Props {
 const { extra = [] } = Astro.props;
 const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const a = company.address;
+const abs = (path: string) => new URL(path, Astro.site).href;
+const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${a.street}, ${a.postalCode} ${a.city}`)}`;
+const sameAs = [company.ratings.google.url, company.ratings.pagesJaunes.url].filter(Boolean);
+const catalog = (page: typeof electricite) => ({
+  '@type': 'OfferCatalog',
+  name: page.crumb,
+  url: abs(`/${page.slug}`),
+  itemListElement: page.sections.map((s) => ({
+    '@type': 'Offer',
+    itemOffered: { '@type': 'Service', name: s.title, description: s.intro, url: abs(`/${page.slug}#${s.id}`) },
+  })),
+});
 
 const business: Record<string, unknown> = {
   '@context': 'https://schema.org',
@@ -20,14 +34,40 @@ const business: Record<string, unknown> = {
   description:
     'Électricien et climaticien à Vendargues : installation, mise aux normes, dépannage électrique, climatisation et pompe à chaleur dans l’est montpelliérain. Dépannage 7j/7, 24h/24.',
   url: `${site}/`,
-  image: `${site}/og-default.png`,
+  image: [abs(vansPhoto.src), `${site}/og-default.png`],
   logo: `${site}/icon-512.png`,
   telephone: '+33619916119',
   email: company.email,
   foundingDate: String(company.foundedYear),
   vatID: company.vat,
   taxID: company.siret.replace(/\s/g, ''),
-  priceRange: '€€',
+  slogan: 'Plus de courant ? Clim en panne ? On arrive.',
+  founder: { '@type': 'Person', name: company.manager, jobTitle: 'Gérant' },
+  numberOfEmployees: { '@type': 'QuantitativeValue', value: company.team.size },
+  knowsLanguage: 'fr',
+  hasMap: mapUrl,
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: '+33619916119',
+      contactType: 'emergency',
+      areaServed: 'FR',
+      availableLanguage: 'French',
+      hoursAvailable: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        opens: '00:00',
+        closes: '23:59',
+      },
+    },
+    { '@type': 'ContactPoint', telephone: '+33635473589', email: company.email, contactType: 'customer service', availableLanguage: 'French' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Électricité et climatisation',
+    itemListElement: [catalog(electricite), catalog(climatisation)],
+  },
+  ...(sameAs.length ? { sameAs } : {}),
   address: {
     '@type': 'PostalAddress',
     streetAddress: a.street,
@@ -58,7 +98,17 @@ if (reviews.length > 0) {
   };
 }
 
-const graph = [business, ...extra];
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${site}/#site`,
+  name: company.name,
+  url: `${site}/`,
+  inLanguage: 'fr-FR',
+  publisher: { '@id': `${site}/#entreprise` },
+};
+
+const graph = [business, website, ...extra];
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(graph.length === 1 ? graph[0] : graph)} />
